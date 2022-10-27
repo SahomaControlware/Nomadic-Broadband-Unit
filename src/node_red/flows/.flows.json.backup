@@ -133,8 +133,8 @@
         "initialize": "// Code added here will be run once\n// whenever the node is started.\nnode.log(\"Hello node red\")\nreturn 1;\n",
         "finalize": "",
         "libs": [],
-        "x": 580,
-        "y": 360,
+        "x": 460,
+        "y": 240,
         "wires": [
             [
                 "88834a01bc4a7120"
@@ -167,5 +167,34 @@
         "x": 790,
         "y": 420,
         "wires": []
+    },
+    {
+        "id": "1ad7c3694038b57a",
+        "type": "inject",
+        "z": "d275db0917751b2f",
+        "name": "guage_in",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "guage_in",
+        "payload": "5",
+        "payloadType": "num",
+        "x": 430,
+        "y": 420,
+        "wires": [
+            [
+                "88834a01bc4a7120"
+            ]
+        ]
     }
 ]
