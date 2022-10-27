@@ -1,0 +1,27 @@
+[
+    {
+        "id": "d275db0917751b2f",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4e7703b487d4460f",
+        "type": "function",
+        "z": "d275db0917751b2f",
+        "name": "function 1",
+        "func": "node.log(\"Hello node red\")",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nnode.log(\"Hello node red\")\n",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    }
+]

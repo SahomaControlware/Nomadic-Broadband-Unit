@@ -1,0 +1,12 @@
+{
+    "name": "nomadicProject",
+    "description": "Project",
+    "version": "0.0.1",
+    "private": true,
+    "node-red": {
+        "settings": {
+            "flowFile": "src/node_red/flows/flows.json",
+            "credentialsFile": "src/node_red/flows/flows_cred.json"
+        }
+    }
+}
