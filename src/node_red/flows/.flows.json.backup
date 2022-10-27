@@ -1,0 +1,90 @@
+[
+    {
+        "id": "d275db0917751b2f",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4e7703b487d4460f",
+        "type": "function",
+        "z": "d275db0917751b2f",
+        "name": "function 1",
+        "func": "node.log(\"Hello node red\")",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nnode.log(\"Hello node red\")\n",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 460,
+        "wires": [
+            [
+                "16d1eea68e364272"
+            ]
+        ]
+    },
+    {
+        "id": "16d1eea68e364272",
+        "type": "debug",
+        "z": "d275db0917751b2f",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "c34489e92394a0d4",
+        "type": "inject",
+        "z": "d275db0917751b2f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "flow",
+        "x": 710,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "68fdc093e8299d8b",
+        "type": "file",
+        "z": "d275db0917751b2f",
+        "name": "",
+        "filename": "",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 680,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    }
+]
