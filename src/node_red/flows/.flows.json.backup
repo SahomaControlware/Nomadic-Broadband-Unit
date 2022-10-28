@@ -8,6 +8,30 @@
         "env": []
     },
     {
+        "id": "e4ff58e5d4e74844",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "42f5fc87a973420f",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "21ab3ea4cf55af84",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "6c3a93197925e743",
         "type": "ui_tab",
         "name": "Home",
@@ -123,9 +147,84 @@
         "className": ""
     },
     {
+        "id": "771d0ad7d5264d43",
+        "type": "ui_button",
+        "z": "d275db0917751b2f",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "button",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 610,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dd92f5eebe2eece3",
+        "type": "ui_button",
+        "z": "e4ff58e5d4e74844",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "button",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 270,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2dbc29e575e9524d",
+        "type": "ui_button",
+        "z": "42f5fc87a973420f",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "button",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 310,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "4e7703b487d4460f",
         "type": "function",
-        "z": "d275db0917751b2f",
+        "z": "21ab3ea4cf55af84",
         "name": "function 1",
         "func": "node.log(\"Hello node red\")",
         "outputs": 1,
@@ -133,8 +232,8 @@
         "initialize": "// Code added here will be run once\n// whenever the node is started.\nnode.log(\"Hello node red\")\nreturn 1;\n",
         "finalize": "",
         "libs": [],
-        "x": 460,
-        "y": 240,
+        "x": 180,
+        "y": 200,
         "wires": [
             [
                 "88834a01bc4a7120"
@@ -144,7 +243,7 @@
     {
         "id": "88834a01bc4a7120",
         "type": "ui_gauge",
-        "z": "d275db0917751b2f",
+        "z": "21ab3ea4cf55af84",
         "name": "",
         "group": "8007ba3e962d7ef3",
         "order": 0,
@@ -164,14 +263,14 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 790,
+        "x": 500,
         "y": 420,
         "wires": []
     },
     {
         "id": "1ad7c3694038b57a",
         "type": "inject",
-        "z": "d275db0917751b2f",
+        "z": "21ab3ea4cf55af84",
         "name": "guage_in",
         "props": [
             {
@@ -189,12 +288,37 @@
         "topic": "guage_in",
         "payload": "5",
         "payloadType": "num",
-        "x": 430,
-        "y": 420,
+        "x": 200,
+        "y": 300,
         "wires": [
             [
                 "88834a01bc4a7120"
             ]
+        ]
+    },
+    {
+        "id": "aff58df88ffb40d7",
+        "type": "ui_button",
+        "z": "21ab3ea4cf55af84",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "button",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 180,
+        "y": 420,
+        "wires": [
+            []
         ]
     }
 ]
