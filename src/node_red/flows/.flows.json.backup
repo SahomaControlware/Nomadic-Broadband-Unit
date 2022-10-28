@@ -8,13 +8,234 @@
         "env": []
     },
     {
+<<<<<<< HEAD
         "id": "4e7703b487d4460f",
         "type": "function",
         "z": "d275db0917751b2f",
+=======
+        "id": "e4ff58e5d4e74844",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "42f5fc87a973420f",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "21ab3ea4cf55af84",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "6c3a93197925e743",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "8ad051782e542693",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "8007ba3e962d7ef3",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "6c3a93197925e743",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "771d0ad7d5264d43",
+        "type": "ui_button",
+        "z": "d275db0917751b2f",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "button",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 610,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dd92f5eebe2eece3",
+        "type": "ui_button",
+        "z": "e4ff58e5d4e74844",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "button",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 270,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2dbc29e575e9524d",
+        "type": "ui_button",
+        "z": "42f5fc87a973420f",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "button",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 310,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4e7703b487d4460f",
+        "type": "function",
+        "z": "21ab3ea4cf55af84",
+>>>>>>> 4dc6afa5d398c5a8b7773fbafb91ee2a9d224102
         "name": "function 1",
         "func": "node.log(\"Hello node red\")",
         "outputs": 1,
         "noerr": 0,
+<<<<<<< HEAD
         "initialize": "// Code added here will be run once\n// whenever the node is started.\nnode.log(\"Hello node red\")\n",
         "finalize": "",
         "libs": [],
@@ -23,6 +244,16 @@
         "wires": [
             [
                 "16d1eea68e364272"
+=======
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nnode.log(\"Hello node red\")\nreturn 1;\n",
+        "finalize": "",
+        "libs": [],
+        "x": 180,
+        "y": 200,
+        "wires": [
+            [
+                "88834a01bc4a7120"
+>>>>>>> 4dc6afa5d398c5a8b7773fbafb91ee2a9d224102
             ]
         ]
     },

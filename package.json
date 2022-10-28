@@ -8,5 +8,8 @@
             "flowFile": "src/node_red/flows/flows.json",
             "credentialsFile": "src/node_red/flows/flows_cred.json"
         }
+    },
+    "dependencies": {
+        "node-red-dashboard": "^3.2.0"
     }
 }
