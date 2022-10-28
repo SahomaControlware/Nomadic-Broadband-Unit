@@ -215,10 +215,117 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 310,
-        "y": 300,
+        "x": 150,
+        "y": 180,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "73bc8bb8f3f586bc",
+        "type": "debug",
+        "z": "42f5fc87a973420f",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "cab5dd7f12a503b8",
+        "type": "ui_chart",
+        "z": "42f5fc87a973420f",
+        "name": "Battery",
+        "group": "97641347c15b007c",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Battery",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": true,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 720,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9d5117f550cdd0c7",
+        "type": "function",
+        "z": "42f5fc87a973420f",
+        "name": "function 2",
+        "func": "var newmsg = {payload: msg.payload};\n\n\n\nreturn newmsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 380,
+        "wires": [
+            [
+                "cab5dd7f12a503b8"
+            ]
+        ]
+    },
+    {
+        "id": "054d678dd0032f71",
+        "type": "ui_slider",
+        "z": "42f5fc87a973420f",
+        "name": "",
+        "label": "slider",
+        "tooltip": "",
+        "group": "97641347c15b007c",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "100",
+        "step": "0.5",
+        "className": "",
+        "x": 310,
+        "y": 240,
+        "wires": [
+            [
+                "9d5117f550cdd0c7"
+            ]
         ]
     },
     {
