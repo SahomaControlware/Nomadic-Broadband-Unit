@@ -8,6 +8,30 @@
         "env": []
     },
     {
+        "id": "e4ff58e5d4e74844",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "42f5fc87a973420f",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "21ab3ea4cf55af84",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "a5898775f44b2632",
         "type": "ui_group",
         "name": "Default",
@@ -122,86 +146,6 @@
                 "py": 0
             }
         }
-    },
-    {
-        "id": "4e7703b487d4460f",
-        "type": "function",
-        "z": "21ab3ea4cf55af84",
-        "name": "function 1",
-        "func": "node.log(\"Hello node red\")",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// Code added here will be run once\n// whenever the node is started.\nnode.log(\"Hello node red\")\nreturn 1;\n",
-        "finalize": "",
-        "libs": [],
-        "x": 180,
-        "y": 200,
-        "wires": [
-            [
-                "88834a01bc4a7120"
-            ]
-        ]
-    },
-    {
-        "id": "16d1eea68e364272",
-        "type": "debug",
-        "z": "d275db0917751b2f",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 660,
-        "y": 520,
-        "wires": []
-    },
-    {
-        "id": "fa95341a31a3d510",
-        "type": "ui_date_picker",
-        "z": "d275db0917751b2f",
-        "name": "",
-        "label": "date",
-        "group": "a5898775f44b2632",
-        "order": 0,
-        "width": "4",
-        "height": "2",
-        "passthru": true,
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 930,
-        "y": 480,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e4ff58e5d4e74844",
-        "type": "tab",
-        "label": "Flow 2",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "42f5fc87a973420f",
-        "type": "tab",
-        "label": "Flow 3",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "21ab3ea4cf55af84",
-        "type": "tab",
-        "label": "Flow 4",
-        "disabled": false,
-        "info": "",
-        "env": []
     },
     {
         "id": "6c3a93197925e743",
@@ -319,11 +263,48 @@
         "className": ""
     },
     {
+        "id": "16d1eea68e364272",
+        "type": "debug",
+        "z": "d275db0917751b2f",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "fa95341a31a3d510",
+        "type": "ui_date_picker",
+        "z": "d275db0917751b2f",
+        "name": "",
+        "label": "date",
+        "group": "a5898775f44b2632",
+        "order": 0,
+        "width": "4",
+        "height": "2",
+        "passthru": true,
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 930,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "771d0ad7d5264d43",
         "type": "ui_button",
         "z": "d275db0917751b2f",
         "name": "",
-        "order": 0,
+        "order": 1,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -362,8 +343,8 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 270,
-        "y": 260,
+        "x": 810,
+        "y": 200,
         "wires": [
             []
         ]
@@ -497,6 +478,25 @@
         "wires": [
             [
                 "9d5117f550cdd0c7"
+            ]
+        ]
+    },
+    {
+        "id": "4e7703b487d4460f",
+        "type": "function",
+        "z": "21ab3ea4cf55af84",
+        "name": "function 1",
+        "func": "node.log(\"Hello node red\")",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nnode.log(\"Hello node red\")\nreturn 1;\n",
+        "finalize": "",
+        "libs": [],
+        "x": 180,
+        "y": 200,
+        "wires": [
+            [
+                "88834a01bc4a7120"
             ]
         ]
     },
