@@ -32,21 +32,6 @@
         "env": []
     },
     {
-        "id": "4e8f3adc.8366c4",
-        "type": "tab",
-        "label": "MQTT simple example",
-        "disabled": false,
-        "info": ""
-    },
-    {
-        "id": "4337c9ba9feaddc0",
-        "type": "tab",
-        "label": "Flow 5",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
         "id": "a5898775f44b2632",
         "type": "ui_group",
         "name": "Default",
@@ -60,7 +45,7 @@
     {
         "id": "521ea9ca5f34cb03",
         "type": "ui_tab",
-        "name": "Relay Control",
+        "name": "Home",
         "icon": "dashboard",
         "disabled": false,
         "hidden": false
@@ -278,76 +263,6 @@
         "className": ""
     },
     {
-        "id": "84bae3707b62dd5b",
-        "type": "mqtt-broker",
-        "name": "nomadic_mqtt_broker",
-        "broker": "localhost",
-        "port": "1883",
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "userProps": "",
-        "sessionExpiry": ""
-    },
-    {
-        "id": "236088dc.d74e48",
-        "type": "mqtt-broker",
-        "name": "Stackhero integrated MQTT server",
-        "broker": "mosquitto",
-        "port": "1883",
-        "clientid": "node-red",
-        "usetls": false,
-        "compatmode": true,
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": ""
-    },
-    {
-        "id": "63f90568cf6333e5",
-        "type": "ui_group",
-        "name": "Relay Control",
-        "tab": "521ea9ca5f34cb03",
-        "order": 2,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "7731981c5949c897",
-        "type": "ui_group",
-        "name": "",
-        "tab": "521ea9ca5f34cb03",
-        "order": 3,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
         "id": "16d1eea68e364272",
         "type": "debug",
         "z": "d275db0917751b2f",
@@ -370,7 +285,7 @@
         "z": "d275db0917751b2f",
         "name": "",
         "label": "date",
-        "group": "8007ba3e962d7ef3",
+        "group": "a5898775f44b2632",
         "order": 0,
         "width": "4",
         "height": "2",
@@ -389,8 +304,7 @@
         "type": "ui_button",
         "z": "d275db0917751b2f",
         "name": "",
-        "group": "8007ba3e962d7ef3",
-        "order": 2,
+        "order": 1,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -565,33 +479,37 @@
         "wires": [
             [
                 "9d5117f550cdd0c7"
-            ]
-        ]
-    },
-    {
-        "id": "4e7703b487d4460f",
-        "type": "function",
         "z": "21ab3ea4cf55af84",
-        "name": "function 1",
-        "func": "node.log(\"Hello node red\")",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// Code added here will be run once\n// whenever the node is started.\nnode.log(\"Hello node red\")\nreturn 1;\n",
-        "finalize": "",
-        "libs": [],
-        "x": 140,
-        "y": 160,
-        "wires": [
-            []
-        ]
+        "name": "",
+        "group": "8007ba3e962d7ef3",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 500,
+        "y": 420,
+        "wires": []
     },
     {
         "id": "1ad7c3694038b57a",
         "type": "inject",
         "z": "21ab3ea4cf55af84",
         "name": "guage_in",
-        "props": [
-            {
+=======
+        "id": "36de5e3ed854f5fb",
                 "p": "payload"
             },
             {
@@ -603,13 +521,26 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+<<<<<<< HEAD
         "topic": "guage_in",
         "payload": "5",
         "payloadType": "num",
-        "x": 150,
-        "y": 220,
+        "x": 200,
+        "y": 300,
         "wires": [
-            []
+            [
+                "88834a01bc4a7120"
+=======
+        "topic": "test",
+        "payload": "This is a test",
+        "payloadType": "str",
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "41fc9fc6.f54338"
+>>>>>>> 9210f823f9f7cc477023cb1dc392050ef75a0656
+            ]
         ]
     },
     {
@@ -617,8 +548,7 @@
         "type": "ui_button",
         "z": "21ab3ea4cf55af84",
         "name": "",
-        "group": "8007ba3e962d7ef3",
-        "order": 1,
+        "order": 0,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -628,459 +558,12 @@
         "bgcolor": "",
         "className": "",
         "icon": "",
-        "payload": "{\"relay_1\":\"TOGGLE\"}",
-        "payloadType": "json",
-        "topic": "payload",
-        "topicType": "msg",
-        "x": 70,
-        "y": 460,
-        "wires": [
-            [
-                "6918d942e99f5754"
-            ]
-        ]
-    },
-    {
-        "id": "c76a30fbbeb26f52",
-        "type": "mqtt in",
-        "z": "21ab3ea4cf55af84",
-        "name": "relay out",
-        "topic": "relay",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "84bae3707b62dd5b",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 380,
-        "y": 460,
-        "wires": [
-            [
-                "79b3bee443d15977"
-            ]
-        ]
-    },
-    {
-        "id": "6918d942e99f5754",
-        "type": "mqtt out",
-        "z": "21ab3ea4cf55af84",
-        "name": "relay",
-        "topic": "relay",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "84bae3707b62dd5b",
-        "x": 230,
-        "y": 460,
-        "wires": []
-    },
-    {
-        "id": "79b3bee443d15977",
-        "type": "function",
-        "z": "21ab3ea4cf55af84",
-        "name": "function 3",
-        "func": "var new_msg = msg.payload;\n\nnode.log(new_msg.relay_1);\nnode.log(\"Msg received\");\nif(new_msg.relay_1 === \"TOGGLE\"){\n    msg.current_relay = 1;\n    return msg;\n}\nreturn 0;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// Code added here will be run once\n// whenever the node is started.\nvar current_state = 0;\n",
-        "finalize": "",
-        "libs": [],
-        "x": 540,
-        "y": 480,
-        "wires": [
-            [
-                "36de5e3ed854f5fb"
-            ]
-        ]
-    },
-    {
-        "id": "36de5e3ed854f5fb",
-        "type": "switch",
-        "z": "21ab3ea4cf55af84",
-        "name": "",
-        "property": "current_relay",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "4",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "5",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "6",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "7",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "8",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 8,
-        "x": 730,
-        "y": 500,
-        "wires": [
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "69b90e441d1f999f",
-        "type": "ui_switch",
-        "z": "21ab3ea4cf55af84",
-        "name": "",
-        "label": "switch",
-        "tooltip": "",
-        "group": "63f90568cf6333e5",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "relay_state",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 490,
-        "y": 60,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "6e1302f9ce9606d6",
-        "type": "ui_switch",
-        "z": "21ab3ea4cf55af84",
-        "name": "",
-        "label": "switch",
-        "tooltip": "",
-        "group": "63f90568cf6333e5",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "relay_state",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 490,
-        "y": 100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "99ace92f565537fe",
-        "type": "ui_switch",
-        "z": "21ab3ea4cf55af84",
-        "name": "",
-        "label": "switch",
-        "tooltip": "",
-        "group": "63f90568cf6333e5",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "relay_state",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 490,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d18a4b596540628c",
-        "type": "ui_switch",
-        "z": "21ab3ea4cf55af84",
-        "name": "",
-        "label": "switch",
-        "tooltip": "",
-        "group": "63f90568cf6333e5",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "relay_state",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 490,
-        "y": 180,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "0fb5cac6529ef4e1",
-        "type": "ui_switch",
-        "z": "21ab3ea4cf55af84",
-        "name": "",
-        "label": "switch",
-        "tooltip": "",
-        "group": "7731981c5949c897",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "relay_state",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 490,
-        "y": 220,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "558d3fc5f2764312",
-        "type": "ui_switch",
-        "z": "21ab3ea4cf55af84",
-        "name": "",
-        "label": "switch",
-        "tooltip": "",
-        "group": "7731981c5949c897",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "relay_state",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 490,
-        "y": 260,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "95d8fa5b3a913edf",
-        "type": "ui_switch",
-        "z": "21ab3ea4cf55af84",
-        "name": "",
-        "label": "switch",
-        "tooltip": "",
-        "group": "7731981c5949c897",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "relay_state",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 490,
-        "y": 300,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "7b2ae9f901786c6c",
-        "type": "ui_switch",
-        "z": "21ab3ea4cf55af84",
-        "name": "",
-        "label": "switch",
-        "tooltip": "",
-        "group": "7731981c5949c897",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "relay_state",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 490,
-        "y": 380,
-        "wires": [
-            [
-                "95d8fa5b3a913edf"
-            ]
-        ]
-    },
-    {
-        "id": "2a928e72.4018fa",
-        "type": "inject",
-        "z": "4e8f3adc.8366c4",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "test",
-        "payload": "This is a test",
+        "payload": "",
         "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
         "x": 180,
-        "y": 100,
-        "wires": [
-            [
-                "41fc9fc6.f54338"
-            ]
-        ]
-    },
-    {
-        "id": "236069e3.c89a9e",
-        "type": "debug",
-        "z": "4e8f3adc.8366c4",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 830,
-        "y": 100,
-        "wires": []
-    },
-    {
-        "id": "2e3574e9.ca655c",
-        "type": "mqtt in",
-        "z": "4e8f3adc.8366c4",
-        "name": "",
-        "topic": "test",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "236088dc.d74e48",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 600,
-        "y": 100,
+        "y": 420,
         "wires": [
             [
                 "236069e3.c89a9e"
