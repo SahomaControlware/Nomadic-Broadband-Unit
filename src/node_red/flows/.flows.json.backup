@@ -197,29 +197,141 @@
         ]
     },
     {
-        "id": "2dbc29e575e9524d",
-        "type": "ui_button",
+        "id": "73bc8bb8f3f586bc",
+        "type": "debug",
         "z": "42f5fc87a973420f",
-        "name": "",
-        "order": 0,
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "cab5dd7f12a503b8",
+        "type": "ui_chart",
+        "z": "42f5fc87a973420f",
+        "d": true,
+        "name": "Battery",
+        "group": "8007ba3e962d7ef3",
+        "order": 1,
         "width": 0,
         "height": 0,
-        "passthru": false,
-        "label": "button",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
+        "label": "Battery",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
         "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 310,
-        "y": 300,
+        "x": 600,
+        "y": 280,
         "wires": [
             []
         ]
+    },
+    {
+        "id": "9d5117f550cdd0c7",
+        "type": "function",
+        "z": "42f5fc87a973420f",
+        "name": "function 2",
+        "func": "\nlet num = (Math.random() * (40 - 1) + 1).toFixed(2)\n// let num2 = 100-num;\nmsg.payload = num;\n\nlet newmsg = {payload:  msg.payload};\n\nreturn newmsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nlet full_charge = 100;",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 280,
+        "wires": [
+            [
+                "d682c425562a24f0"
+            ]
+        ]
+    },
+    {
+        "id": "590a1beaf569fcb5",
+        "type": "inject",
+        "z": "42f5fc87a973420f",
+        "name": "Drain",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "30",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "battery_drain",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 90,
+        "y": 200,
+        "wires": [
+            [
+                "9d5117f550cdd0c7"
+            ]
+        ]
+    },
+    {
+        "id": "d682c425562a24f0",
+        "type": "ui_gauge",
+        "z": "42f5fc87a973420f",
+        "name": "",
+        "group": "8007ba3e962d7ef3",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "compass",
+        "title": "gauge",
+        "label": "percentage",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 570,
+        "y": 340,
+        "wires": []
     },
     {
         "id": "4e7703b487d4460f",

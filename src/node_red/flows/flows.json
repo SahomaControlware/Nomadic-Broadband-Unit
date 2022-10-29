@@ -197,31 +197,6 @@
         ]
     },
     {
-        "id": "2dbc29e575e9524d",
-        "type": "ui_button",
-        "z": "42f5fc87a973420f",
-        "name": "",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "button",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 150,
-        "y": 180,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "73bc8bb8f3f586bc",
         "type": "debug",
         "z": "42f5fc87a973420f",
@@ -242,15 +217,16 @@
         "id": "cab5dd7f12a503b8",
         "type": "ui_chart",
         "z": "42f5fc87a973420f",
+        "d": true,
         "name": "Battery",
-        "group": "97641347c15b007c",
+        "group": "8007ba3e962d7ef3",
         "order": 1,
         "width": 0,
         "height": 0,
         "label": "Battery",
         "chartType": "line",
         "legend": "false",
-        "xformat": "HH:mm:ss",
+        "xformat": "auto",
         "interpolate": "linear",
         "nodata": "",
         "dot": false,
@@ -261,7 +237,7 @@
         "removeOlderUnit": "3600",
         "cutout": 0,
         "useOneColor": false,
-        "useUTC": true,
+        "useUTC": false,
         "colors": [
             "#1f77b4",
             "#aec7e8",
@@ -276,8 +252,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 720,
-        "y": 240,
+        "x": 600,
+        "y": 280,
         "wires": [
             []
         ]
@@ -287,46 +263,75 @@
         "type": "function",
         "z": "42f5fc87a973420f",
         "name": "function 2",
-        "func": "var newmsg = {payload: msg.payload};\n\n\n\nreturn newmsg;",
+        "func": "\nlet num = (Math.random() * (40 - 1) + 1).toFixed(2)\n// let num2 = 100-num;\nmsg.payload = num;\n\nlet newmsg = {payload:  msg.payload};\n\nreturn newmsg;",
         "outputs": 1,
         "noerr": 0,
-        "initialize": "",
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nlet full_charge = 100;",
         "finalize": "",
         "libs": [],
-        "x": 500,
-        "y": 380,
+        "x": 300,
+        "y": 280,
         "wires": [
             [
-                "cab5dd7f12a503b8"
+                "d682c425562a24f0"
             ]
         ]
     },
     {
-        "id": "054d678dd0032f71",
-        "type": "ui_slider",
+        "id": "590a1beaf569fcb5",
+        "type": "inject",
         "z": "42f5fc87a973420f",
-        "name": "",
-        "label": "slider",
-        "tooltip": "",
-        "group": "97641347c15b007c",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "outs": "end",
-        "topic": "topic",
-        "topicType": "msg",
-        "min": 0,
-        "max": "100",
-        "step": "0.5",
-        "className": "",
-        "x": 310,
-        "y": 240,
+        "name": "Drain",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "30",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "battery_drain",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 90,
+        "y": 200,
         "wires": [
             [
                 "9d5117f550cdd0c7"
             ]
         ]
+    },
+    {
+        "id": "d682c425562a24f0",
+        "type": "ui_gauge",
+        "z": "42f5fc87a973420f",
+        "name": "",
+        "group": "8007ba3e962d7ef3",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "percentage",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 570,
+        "y": 340,
+        "wires": []
     },
     {
         "id": "4e7703b487d4460f",
