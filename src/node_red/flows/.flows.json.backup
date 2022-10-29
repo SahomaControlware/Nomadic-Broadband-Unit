@@ -329,7 +329,8 @@
         "type": "ui_button",
         "z": "e4ff58e5d4e74844",
         "name": "",
-        "order": 0,
+        "group": "8007ba3e962d7ef3",
+        "order": 3,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -478,31 +479,6 @@
         "wires": [
             [
                 "9d5117f550cdd0c7"
-            ]
-        ]
-    },
-    {
-        "id": "4e7703b487d4460f",
-        "type": "function",
-        "z": "21ab3ea4cf55af84",
-        "name": "function 1",
-        "func": "node.log(\"Hello node red\")",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// Code added here will be run once\n// whenever the node is started.\nnode.log(\"Hello node red\")\nreturn 1;\n",
-        "finalize": "",
-        "libs": [],
-        "x": 180,
-        "y": 200,
-        "wires": [
-            [
-                "88834a01bc4a7120"
-            ]
-        ]
-    },
-    {
-        "id": "88834a01bc4a7120",
-        "type": "ui_gauge",
         "z": "21ab3ea4cf55af84",
         "name": "",
         "group": "8007ba3e962d7ef3",
@@ -532,8 +508,8 @@
         "type": "inject",
         "z": "21ab3ea4cf55af84",
         "name": "guage_in",
-        "props": [
-            {
+=======
+        "id": "36de5e3ed854f5fb",
                 "p": "payload"
             },
             {
@@ -545,6 +521,7 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+<<<<<<< HEAD
         "topic": "guage_in",
         "payload": "5",
         "payloadType": "num",
@@ -553,6 +530,16 @@
         "wires": [
             [
                 "88834a01bc4a7120"
+=======
+        "topic": "test",
+        "payload": "This is a test",
+        "payloadType": "str",
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "41fc9fc6.f54338"
+>>>>>>> 9210f823f9f7cc477023cb1dc392050ef75a0656
             ]
         ]
     },
@@ -578,7 +565,27 @@
         "x": 180,
         "y": 420,
         "wires": [
-            []
+            [
+                "236069e3.c89a9e"
+            ]
         ]
+    },
+    {
+        "id": "41fc9fc6.f54338",
+        "type": "mqtt out",
+        "z": "4e8f3adc.8366c4",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "236088dc.d74e48",
+        "x": 370,
+        "y": 100,
+        "wires": []
     }
 ]
