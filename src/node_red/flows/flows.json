@@ -32,6 +32,21 @@
         "env": []
     },
     {
+        "id": "4e8f3adc.8366c4",
+        "type": "tab",
+        "label": "MQTT simple example",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "4337c9ba9feaddc0",
+        "type": "tab",
+        "label": "Flow 5",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "a5898775f44b2632",
         "type": "ui_group",
         "name": "Default",
@@ -156,102 +171,6 @@
         "hidden": false
     },
     {
-        "id": "8ad051782e542693",
-        "type": "ui_base",
-        "theme": {
-            "name": "theme-light",
-            "lightTheme": {
-                "default": "#0094CE",
-                "baseColor": "#0094CE",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
-            },
-            "darkTheme": {
-                "default": "#097479",
-                "baseColor": "#097479",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
-            },
-            "customTheme": {
-                "name": "Untitled Theme 1",
-                "default": "#4B7930",
-                "baseColor": "#4B7930",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-            },
-            "themeState": {
-                "base-color": {
-                    "default": "#0094CE",
-                    "value": "#0094CE",
-                    "edited": false
-                },
-                "page-titlebar-backgroundColor": {
-                    "value": "#0094CE",
-                    "edited": false
-                },
-                "page-backgroundColor": {
-                    "value": "#fafafa",
-                    "edited": false
-                },
-                "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-textColor": {
-                    "value": "#1bbfff",
-                    "edited": false
-                },
-                "group-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "widget-textColor": {
-                    "value": "#111111",
-                    "edited": false
-                },
-                "widget-backgroundColor": {
-                    "value": "#0094ce",
-                    "edited": false
-                },
-                "widget-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "base-font": {
-                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-                }
-            },
-            "angularTheme": {
-                "primary": "indigo",
-                "accents": "blue",
-                "warn": "red",
-                "background": "grey",
-                "palette": "light"
-            }
-        },
-        "site": {
-            "name": "Node-RED Dashboard",
-            "hideToolbar": "false",
-            "allowSwipe": "false",
-            "lockMenu": "false",
-            "allowTempTheme": "true",
-            "dateFormat": "DD/MM/YYYY",
-            "sizes": {
-                "sx": 48,
-                "sy": 48,
-                "gx": 6,
-                "gy": 6,
-                "cx": 6,
-                "cy": 6,
-                "px": 0,
-                "py": 0
-            }
-        }
-    },
-    {
         "id": "8007ba3e962d7ef3",
         "type": "ui_group",
         "name": "Default",
@@ -263,67 +182,74 @@
         "className": ""
     },
     {
-        "id": "16d1eea68e364272",
-        "type": "debug",
-        "z": "d275db0917751b2f",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 660,
-        "y": 520,
-        "wires": []
+        "id": "84bae3707b62dd5b",
+        "type": "mqtt-broker",
+        "name": "nomadic_mqtt_broker",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
     },
     {
-        "id": "fa95341a31a3d510",
-        "type": "ui_date_picker",
-        "z": "d275db0917751b2f",
-        "name": "",
-        "label": "date",
-        "group": "8007ba3e962d7ef3",
-        "order": 0,
-        "width": "4",
-        "height": "2",
-        "passthru": true,
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 930,
-        "y": 480,
-        "wires": [
-            []
-        ]
+        "id": "236088dc.d74e48",
+        "type": "mqtt-broker",
+        "name": "Stackhero integrated MQTT server",
+        "broker": "mosquitto",
+        "port": "1883",
+        "clientid": "node-red",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
     },
     {
-        "id": "771d0ad7d5264d43",
-        "type": "ui_button",
-        "z": "d275db0917751b2f",
-        "name": "",
-        "group": "8007ba3e962d7ef3",
+        "id": "63f90568cf6333e5",
+        "type": "ui_group",
+        "name": "Relay Control",
+        "tab": "521ea9ca5f34cb03",
         "order": 2,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "button",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 610,
-        "y": 280,
-        "wires": [
-            []
-        ]
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7731981c5949c897",
+        "type": "ui_group",
+        "name": "",
+        "tab": "521ea9ca5f34cb03",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
     },
     {
         "id": "dd92f5eebe2eece3",
@@ -554,91 +480,6 @@
                 "6918d942e99f5754"
             ]
         ]
-    },
-    {
-        "id": "4e8f3adc.8366c4",
-        "type": "tab",
-        "label": "MQTT simple example",
-        "disabled": false,
-        "info": ""
-    },
-    {
-        "id": "4337c9ba9feaddc0",
-        "type": "tab",
-        "label": "Flow 5",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "84bae3707b62dd5b",
-        "type": "mqtt-broker",
-        "name": "nomadic_mqtt_broker",
-        "broker": "localhost",
-        "port": "1883",
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "userProps": "",
-        "sessionExpiry": ""
-    },
-    {
-        "id": "236088dc.d74e48",
-        "type": "mqtt-broker",
-        "name": "Stackhero integrated MQTT server",
-        "broker": "mosquitto",
-        "port": "1883",
-        "clientid": "node-red",
-        "usetls": false,
-        "compatmode": true,
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": ""
-    },
-    {
-        "id": "63f90568cf6333e5",
-        "type": "ui_group",
-        "name": "Relay Control",
-        "tab": "521ea9ca5f34cb03",
-        "order": 2,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "7731981c5949c897",
-        "type": "ui_group",
-        "name": "",
-        "tab": "521ea9ca5f34cb03",
-        "order": 3,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
     },
     {
         "id": "c76a30fbbeb26f52",
