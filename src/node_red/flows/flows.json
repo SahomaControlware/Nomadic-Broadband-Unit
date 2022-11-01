@@ -278,6 +278,33 @@
         ]
     },
     {
+        "id": "4cf5070e4a50299c",
+        "type": "inject",
+        "z": "e4ff58e5d4e74844",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "2dbc29e575e9524d",
         "type": "ui_button",
         "z": "42f5fc87a973420f",
