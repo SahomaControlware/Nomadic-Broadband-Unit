@@ -311,101 +311,11 @@
         ]
     },
     {
-        "id": "2dbc29e575e9524d",
-        "type": "ui_button",
-        "z": "42f5fc87a973420f",
-        "d": true,
-        "name": "",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "button",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 90,
-        "y": 800,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "73bc8bb8f3f586bc",
-        "type": "debug",
-        "z": "42f5fc87a973420f",
-        "d": true,
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 450,
-        "y": 800,
-        "wires": []
-    },
-    {
-        "id": "9d5117f550cdd0c7",
-        "type": "function",
-        "z": "42f5fc87a973420f",
-        "name": "function 2",
-        "func": "node.log(msg);\nlet newmsg = {}\nnewmsg.payload = msg.payload.battery_level;\nreturn newmsg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 480,
-        "y": 140,
-        "wires": [
-            [
-                "043b1289b77c4e26",
-                "5ab0e58a7683ba31"
-            ]
-        ]
-    },
-    {
-        "id": "054d678dd0032f71",
-        "type": "ui_slider",
-        "z": "42f5fc87a973420f",
-        "d": true,
-        "name": "",
-        "label": "slider",
-        "tooltip": "",
-        "group": "a5898775f44b2632",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "outs": "end",
-        "topic": "topic",
-        "topicType": "msg",
-        "min": 0,
-        "max": "100",
-        "step": "0.5",
-        "className": "",
-        "x": 90,
-        "y": 380,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "bf6edace3ce9c875",
         "type": "mqtt out",
         "z": "42f5fc87a973420f",
-        "name": "sensor",
-        "topic": "data",
+        "name": "sensor req",
+        "topic": "multimeter_request",
         "qos": "",
         "retain": "",
         "respTopic": "",
@@ -414,16 +324,16 @@
         "correl": "",
         "expiry": "",
         "broker": "84bae3707b62dd5b",
-        "x": 290,
-        "y": 80,
+        "x": 250,
+        "y": 120,
         "wires": []
     },
     {
         "id": "bcd58450f30e1f6c",
         "type": "mqtt in",
         "z": "42f5fc87a973420f",
-        "name": "sensor out",
-        "topic": "data",
+        "name": "sensor reading",
+        "topic": "multimeter_reading",
         "qos": "2",
         "datatype": "auto-detect",
         "broker": "84bae3707b62dd5b",
@@ -431,12 +341,13 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 300,
-        "y": 200,
+        "x": 440,
+        "y": 120,
         "wires": [
             [
-                "9d5117f550cdd0c7",
-                "cad63b984de5ac57"
+                "043b1289b77c4e26",
+                "5ab0e58a7683ba31",
+                "b6c24b3e47e7f0c3"
             ]
         ]
     },
@@ -451,10 +362,10 @@
         "height": "3",
         "gtype": "gage",
         "title": "Battery",
-        "label": "units",
+        "label": "Volts",
         "format": "{{value}}",
         "min": 0,
-        "max": "100",
+        "max": "14",
         "colors": [
             "#00b500",
             "#e6e600",
@@ -463,35 +374,8 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 760,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "f995a6d5f765e1c1",
-        "type": "ui_gauge",
-        "z": "42f5fc87a973420f",
-        "name": "",
-        "group": "8007ba3e962d7ef3",
-        "order": 3,
-        "width": "3",
-        "height": "3",
-        "gtype": "gage",
-        "title": "Load",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "100",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "className": "",
-        "x": 750,
-        "y": 280,
+        "x": 860,
+        "y": 160,
         "wires": []
     },
     {
@@ -507,25 +391,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 800,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "ccf8cbfcb5f3da20",
-        "type": "debug",
-        "z": "42f5fc87a973420f",
-        "name": "Load Debug",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 770,
-        "y": 240,
+        "x": 900,
+        "y": 200,
         "wires": []
     },
     {
@@ -536,21 +403,17 @@
         "props": [
             {
                 "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
             }
         ],
-        "repeat": "1",
+        "repeat": "3",
         "crontab": "",
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"load\":24, \"battery_level\":87}",
-        "payloadType": "str",
-        "x": 110,
-        "y": 80,
+        "payload": "{\"multimeter_request\": \"STATUS\"}",
+        "payloadType": "json",
+        "x": 90,
+        "y": 120,
         "wires": [
             [
                 "bf6edace3ce9c875"
@@ -558,24 +421,72 @@
         ]
     },
     {
-        "id": "cad63b984de5ac57",
+        "id": "53fda2946801ab90",
+        "type": "ui_led",
+        "z": "42f5fc87a973420f",
+        "order": 3,
+        "group": "8007ba3e962d7ef3",
+        "width": 0,
+        "height": 0,
+        "label": "Sensor Status",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#008000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "Multimeter Status",
+        "x": 890,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "b6c24b3e47e7f0c3",
         "type": "function",
         "z": "42f5fc87a973420f",
-        "name": "function 4",
-        "func": "let newmsg = {}\nnewmsg.payload = msg.payload.load;\nreturn newmsg;",
+        "name": "function 5",
+        "func": "let reading = parseFloat(msg.payload);\nnode.log(msg);\nif(reading > 0) {\n    msg.payload = true\n    return msg;\n}\nmsg.payload = false;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 480,
-        "y": 260,
+        "x": 680,
+        "y": 100,
         "wires": [
             [
-                "ccf8cbfcb5f3da20",
-                "f995a6d5f765e1c1"
+                "ab5a29c75d472836",
+                "53fda2946801ab90"
             ]
         ]
+    },
+    {
+        "id": "ab5a29c75d472836",
+        "type": "debug",
+        "z": "42f5fc87a973420f",
+        "name": "Status Light Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 80,
+        "wires": []
     },
     {
         "id": "4e7703b487d4460f",
