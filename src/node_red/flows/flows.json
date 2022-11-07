@@ -258,222 +258,12 @@
         "sessionExpiry": ""
     },
     {
-        "id": "b3ff600f9f1d75be",
-        "type": "ui_tab",
-        "name": "Temperature",
-        "icon": "dashboard",
-        "order": 3,
-        "disabled": false,
-        "hidden": false
-    },
-    {
-        "id": "c3553afd1fe37ae4",
-        "type": "ui_group",
-        "name": "Chart",
-        "tab": "b3ff600f9f1d75be",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "f6b14d864c7cdca3",
-        "type": "ui_group",
-        "name": "Group 2",
-        "tab": "b3ff600f9f1d75be",
-        "order": 2,
-        "disp": true,
-        "width": 6
-    },
-    {
-        "id": "25bd8b7a194197db",
-        "type": "ui_group",
-        "name": "Group 3",
-        "tab": "b3ff600f9f1d75be",
-        "order": 3,
-        "disp": true,
-        "width": 6
-    },
-    {
-        "id": "c5bf071814703443",
-        "type": "mqtt out",
-        "z": "d275db0917751b2f",
-        "name": "temp_req",
-        "topic": "temp_req",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "84bae3707b62dd5b",
-        "x": 400,
-        "y": 100,
-        "wires": []
-    },
-    {
-        "id": "b9ca8e6a54718359",
-        "type": "mqtt in",
-        "z": "d275db0917751b2f",
-        "name": "",
-        "topic": "temp_data",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "84bae3707b62dd5b",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 160,
-        "y": 300,
-        "wires": [
-            [
-                "57e788fa4a123276",
-                "385f4531eac18cb4",
-                "801e57a8bf33ba49",
-                "7ea32f09f9edc7b0"
-            ]
-        ],
-        "info": "Gets the temperature data (currently, \nnot hooked up to the sensors)"
-    },
-    {
-        "id": "57e788fa4a123276",
-        "type": "debug",
-        "z": "d275db0917751b2f",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 350,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "584237942a7cbca8",
-        "type": "inject",
-        "z": "d275db0917751b2f",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "5",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"temperature sensor\":\"READ\"}",
-        "payloadType": "json",
-        "x": 170,
-        "y": 100,
-        "wires": [
-            [
-                "c5bf071814703443"
-            ]
-        ],
-        "info": "Currently, sending a request \nevery 5 seconds for the temperature data"
-    },
-    {
-        "id": "385f4531eac18cb4",
-        "type": "ui_chart",
-        "z": "d275db0917751b2f",
-        "name": "",
-        "group": "c3553afd1fe37ae4",
-        "order": 1,
-        "width": "6",
-        "height": "6",
-        "label": "Temperature Over Last Day",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "60",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 400,
-        "y": 360,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "801e57a8bf33ba49",
-        "type": "ui_text",
-        "z": "d275db0917751b2f",
-        "group": "f6b14d864c7cdca3",
-        "order": 5,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Current Temperature:",
-        "format": "{{msg.payload}}",
-        "layout": "row-center",
-        "className": "",
-        "x": 380,
-        "y": 420,
-        "wires": []
-    },
-    {
-        "id": "7ea32f09f9edc7b0",
-        "type": "ui_widget_thermometer",
-        "z": "d275db0917751b2f",
-        "group": "25bd8b7a194197db",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "title": "",
-        "colorTop": "#2196f3",
-        "colorMiddle": "#8bc34a",
-        "colorBottom": "#f44336",
-        "unit": "°F",
-        "scale": "normal",
-        "minTemp": 0,
-        "maxTemp": "35",
-        "x": 350,
-        "y": 480,
-        "wires": []
-    },
-    {
-        "id": "dd92f5eebe2eece3",
+        "id": "79c9c8ea477ad745",
         "type": "ui_button",
         "z": "e4ff58e5d4e74844",
         "name": "",
-        "group": "8007ba3e962d7ef3",
-        "order": 3,
+        "group": "63f90568cf6333e5",
+        "order": 1,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -483,18 +273,75 @@
         "bgcolor": "",
         "className": "",
         "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
+        "payload": "{\"heartbeat\":\"STATUS\"}",
+        "payloadType": "json",
+        "topic": "payload",
         "topicType": "msg",
-        "x": 270,
-        "y": 260,
+        "x": 110,
+        "y": 520,
         "wires": [
             []
         ]
     },
     {
-        "id": "4cf5070e4a50299c",
+        "id": "ff646cdc333eec06",
+        "type": "mqtt out",
+        "z": "e4ff58e5d4e74844",
+        "name": "heartbeat_send",
+        "topic": "heartbeat_send",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "84bae3707b62dd5b",
+        "x": 640,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "52927674071f2086",
+        "type": "mqtt in",
+        "z": "e4ff58e5d4e74844",
+        "name": "heartbeat_receive",
+        "topic": "heartbeat_receive",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "84bae3707b62dd5b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 430,
+        "y": 320,
+        "wires": [
+            [
+                "972c82a024f124c2",
+                "e6a352e514c4fcab"
+            ]
+        ]
+    },
+    {
+        "id": "972c82a024f124c2",
+        "type": "debug",
+        "z": "e4ff58e5d4e74844",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "4e66c47d56a9cee9",
         "type": "inject",
         "z": "e4ff58e5d4e74844",
         "name": "",
@@ -507,18 +354,51 @@
                 "vt": "str"
             }
         ],
-        "repeat": "",
+        "repeat": "3",
         "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
+        "once": true,
+        "onceDelay": "0.1",
         "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 160,
-        "y": 40,
+        "payload": "{\"heartbeat\":\"STATUS\"}",
+        "payloadType": "json",
+        "x": 370,
+        "y": 200,
         "wires": [
-            []
+            [
+                "ff646cdc333eec06"
+            ]
         ]
+    },
+    {
+        "id": "e6a352e514c4fcab",
+        "type": "ui_led",
+        "z": "e4ff58e5d4e74844",
+        "order": 0,
+        "group": "a5898775f44b2632",
+        "width": 0,
+        "height": 0,
+        "label": "Status",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "num"
+            },
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 890,
+        "y": 380,
+        "wires": []
     },
     {
         "id": "2dbc29e575e9524d",
@@ -1259,6 +1139,216 @@
         "broker": "",
         "x": 370,
         "y": 100,
+        "wires": []
+    },
+    {
+        "id": "b3ff600f9f1d75be",
+        "type": "ui_tab",
+        "name": "Temperature",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "c3553afd1fe37ae4",
+        "type": "ui_group",
+        "name": "Chart",
+        "tab": "b3ff600f9f1d75be",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f6b14d864c7cdca3",
+        "type": "ui_group",
+        "name": "Group 2",
+        "tab": "b3ff600f9f1d75be",
+        "order": 2,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "25bd8b7a194197db",
+        "type": "ui_group",
+        "name": "Group 3",
+        "tab": "b3ff600f9f1d75be",
+        "order": 3,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "c5bf071814703443",
+        "type": "mqtt out",
+        "z": "d275db0917751b2f",
+        "name": "temp_req",
+        "topic": "temp_req",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "84bae3707b62dd5b",
+        "x": 400,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "b9ca8e6a54718359",
+        "type": "mqtt in",
+        "z": "d275db0917751b2f",
+        "name": "",
+        "topic": "temp_data",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "84bae3707b62dd5b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 300,
+        "wires": [
+            [
+                "57e788fa4a123276",
+                "385f4531eac18cb4",
+                "801e57a8bf33ba49",
+                "7ea32f09f9edc7b0"
+            ]
+        ],
+        "info": "Gets the temperature data (currently, \nnot hooked up to the sensors)"
+    },
+    {
+        "id": "57e788fa4a123276",
+        "type": "debug",
+        "z": "d275db0917751b2f",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 350,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "584237942a7cbca8",
+        "type": "inject",
+        "z": "d275db0917751b2f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"temperature sensor\":\"READ\"}",
+        "payloadType": "json",
+        "x": 170,
+        "y": 100,
+        "wires": [
+            [
+                "c5bf071814703443"
+            ]
+        ],
+        "info": "Currently, sending a request \nevery 5 seconds for the temperature data"
+    },
+    {
+        "id": "385f4531eac18cb4",
+        "type": "ui_chart",
+        "z": "d275db0917751b2f",
+        "name": "",
+        "group": "c3553afd1fe37ae4",
+        "order": 1,
+        "width": "6",
+        "height": "6",
+        "label": "Temperature Over Last Day",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 400,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "801e57a8bf33ba49",
+        "type": "ui_text",
+        "z": "d275db0917751b2f",
+        "group": "f6b14d864c7cdca3",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Current Temperature:",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "className": "",
+        "x": 380,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "7ea32f09f9edc7b0",
+        "type": "ui_widget_thermometer",
+        "z": "d275db0917751b2f",
+        "group": "25bd8b7a194197db",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "title": "",
+        "colorTop": "#2196f3",
+        "colorMiddle": "#8bc34a",
+        "colorBottom": "#f44336",
+        "unit": "°F",
+        "scale": "normal",
+        "minTemp": 0,
+        "maxTemp": "35",
+        "x": 350,
+        "y": 480,
         "wires": []
     }
 ]
