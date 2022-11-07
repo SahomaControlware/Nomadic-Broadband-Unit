@@ -308,6 +308,7 @@
         "id": "2dbc29e575e9524d",
         "type": "ui_button",
         "z": "42f5fc87a973420f",
+        "d": true,
         "name": "",
         "order": 0,
         "width": 0,
@@ -323,8 +324,8 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 150,
-        "y": 180,
+        "x": 90,
+        "y": 800,
         "wires": [
             []
         ]
@@ -333,6 +334,7 @@
         "id": "73bc8bb8f3f586bc",
         "type": "debug",
         "z": "42f5fc87a973420f",
+        "d": true,
         "name": "debug 1",
         "active": true,
         "tosidebar": true,
@@ -342,70 +344,27 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 510,
-        "y": 180,
+        "x": 450,
+        "y": 800,
         "wires": []
-    },
-    {
-        "id": "cab5dd7f12a503b8",
-        "type": "ui_chart",
-        "z": "42f5fc87a973420f",
-        "name": "Battery",
-        "group": "97641347c15b007c",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "label": "Battery",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "100",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": true,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 720,
-        "y": 240,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "9d5117f550cdd0c7",
         "type": "function",
         "z": "42f5fc87a973420f",
         "name": "function 2",
-        "func": "var newmsg = {payload: msg.payload};\n\n\n\nreturn newmsg;",
+        "func": "node.log(msg);\nlet newmsg = {}\nnewmsg.payload = msg.payload.battery_level;\nreturn newmsg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 500,
-        "y": 380,
+        "x": 480,
+        "y": 140,
         "wires": [
             [
-                "cab5dd7f12a503b8"
+                "043b1289b77c4e26",
+                "5ab0e58a7683ba31"
             ]
         ]
     },
@@ -413,10 +372,11 @@
         "id": "054d678dd0032f71",
         "type": "ui_slider",
         "z": "42f5fc87a973420f",
+        "d": true,
         "name": "",
         "label": "slider",
         "tooltip": "",
-        "group": "97641347c15b007c",
+        "group": "a5898775f44b2632",
         "order": 0,
         "width": 0,
         "height": 0,
@@ -428,11 +388,186 @@
         "max": "100",
         "step": "0.5",
         "className": "",
-        "x": 310,
-        "y": 240,
+        "x": 90,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bf6edace3ce9c875",
+        "type": "mqtt out",
+        "z": "42f5fc87a973420f",
+        "name": "sensor",
+        "topic": "data",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "84bae3707b62dd5b",
+        "x": 290,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "bcd58450f30e1f6c",
+        "type": "mqtt in",
+        "z": "42f5fc87a973420f",
+        "name": "sensor out",
+        "topic": "data",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "84bae3707b62dd5b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 300,
+        "y": 200,
         "wires": [
             [
-                "9d5117f550cdd0c7"
+                "9d5117f550cdd0c7",
+                "cad63b984de5ac57"
+            ]
+        ]
+    },
+    {
+        "id": "043b1289b77c4e26",
+        "type": "ui_gauge",
+        "z": "42f5fc87a973420f",
+        "name": "",
+        "group": "8007ba3e962d7ef3",
+        "order": 2,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Battery",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 760,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "f995a6d5f765e1c1",
+        "type": "ui_gauge",
+        "z": "42f5fc87a973420f",
+        "name": "",
+        "group": "8007ba3e962d7ef3",
+        "order": 3,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Load",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 750,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "5ab0e58a7683ba31",
+        "type": "debug",
+        "z": "42f5fc87a973420f",
+        "name": "Battery Sensor Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "ccf8cbfcb5f3da20",
+        "type": "debug",
+        "z": "42f5fc87a973420f",
+        "name": "Load Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "2fbde1c6bd9ffa75",
+        "type": "inject",
+        "z": "42f5fc87a973420f",
+        "name": "load",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"load\":24, \"battery_level\":87}",
+        "payloadType": "str",
+        "x": 110,
+        "y": 80,
+        "wires": [
+            [
+                "bf6edace3ce9c875"
+            ]
+        ]
+    },
+    {
+        "id": "cad63b984de5ac57",
+        "type": "function",
+        "z": "42f5fc87a973420f",
+        "name": "function 4",
+        "func": "let newmsg = {}\nnewmsg.payload = msg.payload.load;\nreturn newmsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 260,
+        "wires": [
+            [
+                "ccf8cbfcb5f3da20",
+                "f995a6d5f765e1c1"
             ]
         ]
     },
