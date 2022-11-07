@@ -209,27 +209,6 @@
         "sessionExpiry": ""
     },
     {
-        "id": "236088dc.d74e48",
-        "type": "mqtt-broker",
-        "name": "Stackhero integrated MQTT server",
-        "broker": "mosquitto",
-        "port": "1883",
-        "clientid": "node-red",
-        "usetls": false,
-        "compatmode": true,
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": ""
-    },
-    {
         "id": "63f90568cf6333e5",
         "type": "ui_group",
         "name": "Relay Control",
@@ -250,6 +229,33 @@
         "width": "6",
         "collapse": false,
         "className": ""
+    },
+    {
+        "id": "532a913ecf1318e0",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1234",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
     },
     {
         "id": "dd92f5eebe2eece3",
@@ -485,7 +491,7 @@
         "type": "ui_button",
         "z": "21ab3ea4cf55af84",
         "name": "",
-        "group": "8007ba3e962d7ef3",
+        "group": "63f90568cf6333e5",
         "order": 1,
         "width": 0,
         "height": 0,
@@ -524,9 +530,7 @@
         "x": 60,
         "y": 240,
         "wires": [
-            [
-                "79b3bee443d15977"
-            ]
+            []
         ]
     },
     {
@@ -543,8 +547,8 @@
         "correl": "",
         "expiry": "",
         "broker": "84bae3707b62dd5b",
-        "x": 90,
-        "y": 80,
+        "x": 310,
+        "y": 40,
         "wires": []
     },
     {
@@ -663,12 +667,12 @@
         "topic": "relay_state",
         "topicType": "msg",
         "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
+        "onvalue": "3",
+        "onvalueType": "num",
         "onicon": "",
         "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
+        "offvalue": "2",
+        "offvalueType": "str",
         "officon": "",
         "offcolor": "",
         "animate": false,
@@ -676,7 +680,10 @@
         "x": 690,
         "y": 60,
         "wires": [
-            []
+            [
+                "412266dacf3be6a6",
+                "8fbfebb8975cd871"
+            ]
         ]
     },
     {
@@ -695,12 +702,12 @@
         "topic": "relay_state",
         "topicType": "msg",
         "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
+        "onvalue": "5",
+        "onvalueType": "num",
         "onicon": "",
         "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
+        "offvalue": "4",
+        "offvalueType": "num",
         "officon": "",
         "offcolor": "",
         "animate": false,
@@ -708,7 +715,10 @@
         "x": 690,
         "y": 100,
         "wires": [
-            []
+            [
+                "412266dacf3be6a6",
+                "8fbfebb8975cd871"
+            ]
         ]
     },
     {
@@ -727,12 +737,12 @@
         "topic": "relay_state",
         "topicType": "msg",
         "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
+        "onvalue": "9",
+        "onvalueType": "num",
         "onicon": "",
         "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
+        "offvalue": "8",
+        "offvalueType": "num",
         "officon": "",
         "offcolor": "",
         "animate": false,
@@ -740,7 +750,10 @@
         "x": 690,
         "y": 140,
         "wires": [
-            []
+            [
+                "412266dacf3be6a6",
+                "8fbfebb8975cd871"
+            ]
         ]
     },
     {
@@ -759,12 +772,12 @@
         "topic": "relay_state",
         "topicType": "msg",
         "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
+        "onvalue": "17",
+        "onvalueType": "num",
         "onicon": "",
         "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
+        "offvalue": "16",
+        "offvalueType": "num",
         "officon": "",
         "offcolor": "",
         "animate": false,
@@ -772,7 +785,10 @@
         "x": 690,
         "y": 180,
         "wires": [
-            []
+            [
+                "412266dacf3be6a6",
+                "8fbfebb8975cd871"
+            ]
         ]
     },
     {
@@ -791,12 +807,12 @@
         "topic": "relay_state",
         "topicType": "msg",
         "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
+        "onvalue": "33",
+        "onvalueType": "num",
         "onicon": "",
         "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
+        "offvalue": "32",
+        "offvalueType": "num",
         "officon": "",
         "offcolor": "",
         "animate": false,
@@ -804,7 +820,10 @@
         "x": 690,
         "y": 220,
         "wires": [
-            []
+            [
+                "412266dacf3be6a6",
+                "8fbfebb8975cd871"
+            ]
         ]
     },
     {
@@ -823,12 +842,12 @@
         "topic": "relay_state",
         "topicType": "msg",
         "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
+        "onvalue": "65",
+        "onvalueType": "num",
         "onicon": "",
         "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
+        "offvalue": "64",
+        "offvalueType": "num",
         "officon": "",
         "offcolor": "",
         "animate": false,
@@ -836,7 +855,10 @@
         "x": 690,
         "y": 260,
         "wires": [
-            []
+            [
+                "412266dacf3be6a6",
+                "8fbfebb8975cd871"
+            ]
         ]
     },
     {
@@ -855,12 +877,12 @@
         "topic": "relay_state",
         "topicType": "msg",
         "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
+        "onvalue": "129",
+        "onvalueType": "num",
         "onicon": "",
         "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
+        "offvalue": "128",
+        "offvalueType": "num",
         "officon": "",
         "offcolor": "",
         "animate": false,
@@ -868,7 +890,10 @@
         "x": 690,
         "y": 300,
         "wires": [
-            []
+            [
+                "412266dacf3be6a6",
+                "8fbfebb8975cd871"
+            ]
         ]
     },
     {
@@ -887,12 +912,12 @@
         "topic": "relay_state",
         "topicType": "msg",
         "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
+        "onvalue": "257",
+        "onvalueType": "num",
         "onicon": "",
         "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
+        "offvalue": "256",
+        "offvalueType": "num",
         "officon": "",
         "offcolor": "",
         "animate": false,
@@ -900,8 +925,47 @@
         "x": 690,
         "y": 340,
         "wires": [
-            []
+            [
+                "412266dacf3be6a6",
+                "8fbfebb8975cd871"
+            ]
         ]
+    },
+    {
+        "id": "412266dacf3be6a6",
+        "type": "mqtt out",
+        "z": "21ab3ea4cf55af84",
+        "name": "relay",
+        "topic": "relay",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "84bae3707b62dd5b",
+        "x": 890,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "8fbfebb8975cd871",
+        "type": "mqtt out",
+        "z": "21ab3ea4cf55af84",
+        "name": "relay",
+        "topic": "relay",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "532a913ecf1318e0",
+        "x": 890,
+        "y": 520,
+        "wires": []
     },
     {
         "id": "2a928e72.4018fa",
@@ -956,7 +1020,7 @@
         "topic": "test",
         "qos": "2",
         "datatype": "auto",
-        "broker": "236088dc.d74e48",
+        "broker": "",
         "nl": false,
         "rap": true,
         "rh": 0,
@@ -982,7 +1046,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "236088dc.d74e48",
+        "broker": "",
         "x": 370,
         "y": 100,
         "wires": []
