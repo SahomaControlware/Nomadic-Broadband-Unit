@@ -258,37 +258,11 @@
         "sessionExpiry": ""
     },
     {
-        "id": "79c9c8ea477ad745",
-        "type": "ui_button",
-        "z": "e4ff58e5d4e74844",
-        "name": "",
-        "group": "63f90568cf6333e5",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "button",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "{\"heartbeat\":\"STATUS\"}",
-        "payloadType": "json",
-        "topic": "payload",
-        "topicType": "msg",
-        "x": 110,
-        "y": 520,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "ff646cdc333eec06",
+        "id": "bf6edace3ce9c875",
         "type": "mqtt out",
-        "z": "e4ff58e5d4e74844",
-        "name": "heartbeat_send",
-        "topic": "heartbeat_send",
+        "z": "42f5fc87a973420f",
+        "name": "sensor req",
+        "topic": "multimeter_request",
         "qos": "",
         "retain": "",
         "respTopic": "",
@@ -297,16 +271,16 @@
         "correl": "",
         "expiry": "",
         "broker": "84bae3707b62dd5b",
-        "x": 640,
-        "y": 200,
+        "x": 250,
+        "y": 120,
         "wires": []
     },
     {
-        "id": "52927674071f2086",
+        "id": "bcd58450f30e1f6c",
         "type": "mqtt in",
-        "z": "e4ff58e5d4e74844",
-        "name": "heartbeat_receive",
-        "topic": "heartbeat_receive",
+        "z": "42f5fc87a973420f",
+        "name": "sensor reading",
+        "topic": "multimeter_reading",
         "qos": "2",
         "datatype": "auto-detect",
         "broker": "84bae3707b62dd5b",
@@ -314,20 +288,48 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 430,
-        "y": 320,
+        "x": 440,
+        "y": 120,
         "wires": [
             [
-                "972c82a024f124c2",
-                "e6a352e514c4fcab"
+                "043b1289b77c4e26",
+                "5ab0e58a7683ba31",
+                "b6c24b3e47e7f0c3"
             ]
         ]
     },
     {
-        "id": "972c82a024f124c2",
+        "id": "043b1289b77c4e26",
+        "type": "ui_gauge",
+        "z": "42f5fc87a973420f",
+        "name": "",
+        "group": "8007ba3e962d7ef3",
+        "order": 2,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Battery",
+        "label": "Volts",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "14",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 860,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "5ab0e58a7683ba31",
         "type": "debug",
-        "z": "e4ff58e5d4e74844",
-        "name": "debug 2",
+        "z": "42f5fc87a973420f",
+        "name": "Battery Sensor Debug",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -336,201 +338,102 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 680,
-        "y": 440,
+        "x": 900,
+        "y": 200,
         "wires": []
     },
     {
-        "id": "4e66c47d56a9cee9",
+        "id": "2fbde1c6bd9ffa75",
         "type": "inject",
-        "z": "e4ff58e5d4e74844",
-        "name": "",
+        "z": "42f5fc87a973420f",
+        "name": "load",
         "props": [
             {
                 "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
             }
         ],
         "repeat": "3",
         "crontab": "",
         "once": true,
-        "onceDelay": "0.1",
+        "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"heartbeat\":\"STATUS\"}",
+        "payload": "{\"multimeter_request\": \"STATUS\"}",
         "payloadType": "json",
-        "x": 370,
-        "y": 200,
+        "x": 90,
+        "y": 120,
         "wires": [
             [
-                "ff646cdc333eec06"
+                "bf6edace3ce9c875"
             ]
         ]
     },
     {
-        "id": "e6a352e514c4fcab",
+        "id": "53fda2946801ab90",
         "type": "ui_led",
-        "z": "e4ff58e5d4e74844",
-        "order": 0,
-        "group": "a5898775f44b2632",
+        "z": "42f5fc87a973420f",
+        "order": 3,
+        "group": "8007ba3e962d7ef3",
         "width": 0,
         "height": 0,
-        "label": "Status",
+        "label": "Sensor Status",
         "labelPlacement": "left",
         "labelAlignment": "left",
         "colorForValue": [
             {
                 "color": "#ff0000",
-                "value": "0",
-                "valueType": "num"
+                "value": "false",
+                "valueType": "bool"
             },
             {
                 "color": "#008000",
-                "value": "1",
-                "valueType": "num"
+                "value": "true",
+                "valueType": "bool"
             }
         ],
         "allowColorForValueInMessage": false,
         "shape": "circle",
         "showGlow": true,
-        "name": "",
+        "name": "Multimeter Status",
         "x": 890,
-        "y": 380,
+        "y": 120,
         "wires": []
     },
     {
-        "id": "2dbc29e575e9524d",
-        "type": "ui_button",
-        "z": "42f5fc87a973420f",
-        "name": "",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "button",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 150,
-        "y": 180,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "73bc8bb8f3f586bc",
-        "type": "debug",
-        "z": "42f5fc87a973420f",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 510,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "cab5dd7f12a503b8",
-        "type": "ui_chart",
-        "z": "42f5fc87a973420f",
-        "name": "Battery",
-        "group": "97641347c15b007c",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "label": "Battery",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "100",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": true,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 720,
-        "y": 240,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "9d5117f550cdd0c7",
+        "id": "b6c24b3e47e7f0c3",
         "type": "function",
         "z": "42f5fc87a973420f",
-        "name": "function 2",
-        "func": "var newmsg = {payload: msg.payload};\n\n\n\nreturn newmsg;",
+        "name": "function 5",
+        "func": "let reading = parseFloat(msg.payload);\nnode.log(msg);\nif(reading > 0) {\n    msg.payload = true\n    return msg;\n}\nmsg.payload = false;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 500,
-        "y": 380,
+        "x": 680,
+        "y": 100,
         "wires": [
             [
-                "cab5dd7f12a503b8"
+                "ab5a29c75d472836",
+                "53fda2946801ab90"
             ]
         ]
     },
     {
-        "id": "054d678dd0032f71",
-        "type": "ui_slider",
+        "id": "ab5a29c75d472836",
+        "type": "debug",
         "z": "42f5fc87a973420f",
-        "name": "",
-        "label": "slider",
-        "tooltip": "",
-        "group": "97641347c15b007c",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "outs": "end",
-        "topic": "topic",
-        "topicType": "msg",
-        "min": 0,
-        "max": "100",
-        "step": "0.5",
-        "className": "",
-        "x": 310,
-        "y": 240,
-        "wires": [
-            [
-                "9d5117f550cdd0c7"
-            ]
-        ]
+        "name": "Status Light Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 80,
+        "wires": []
     },
     {
         "id": "4e7703b487d4460f",
@@ -1139,6 +1042,149 @@
         "broker": "",
         "x": 370,
         "y": 100,
+        "wires": []
+    },
+    {
+        "id": "79c9c8ea477ad745",
+        "type": "ui_button",
+        "z": "e4ff58e5d4e74844",
+        "name": "",
+        "group": "63f90568cf6333e5",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "button",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"heartbeat\":\"STATUS\"}",
+        "payloadType": "json",
+        "topic": "payload",
+        "topicType": "msg",
+        "x": 110,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ff646cdc333eec06",
+        "type": "mqtt out",
+        "z": "e4ff58e5d4e74844",
+        "name": "heartbeat_send",
+        "topic": "heartbeat_send",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "84bae3707b62dd5b",
+        "x": 640,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "52927674071f2086",
+        "type": "mqtt in",
+        "z": "e4ff58e5d4e74844",
+        "name": "heartbeat_receive",
+        "topic": "heartbeat_receive",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "84bae3707b62dd5b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 430,
+        "y": 320,
+        "wires": [
+            [
+                "972c82a024f124c2",
+                "e6a352e514c4fcab"
+            ]
+        ]
+    },
+    {
+        "id": "972c82a024f124c2",
+        "type": "debug",
+        "z": "e4ff58e5d4e74844",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "4e66c47d56a9cee9",
+        "type": "inject",
+        "z": "e4ff58e5d4e74844",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.1",
+        "topic": "",
+        "payload": "{\"heartbeat\":\"STATUS\"}",
+        "payloadType": "json",
+        "x": 370,
+        "y": 200,
+        "wires": [
+            [
+                "ff646cdc333eec06"
+            ]
+        ]
+    },
+    {
+        "id": "e6a352e514c4fcab",
+        "type": "ui_led",
+        "z": "e4ff58e5d4e74844",
+        "order": 0,
+        "group": "a5898775f44b2632",
+        "width": 0,
+        "height": 0,
+        "label": "Status",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "num"
+            },
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 890,
+        "y": 380,
         "wires": []
     },
     {
