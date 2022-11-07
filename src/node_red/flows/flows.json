@@ -258,6 +258,176 @@
         "sessionExpiry": ""
     },
     {
+        "id": "b3ff600f9f1d75be",
+        "type": "ui_tab",
+        "name": "Temperature",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "c3553afd1fe37ae4",
+        "type": "ui_group",
+        "name": "Chart",
+        "tab": "b3ff600f9f1d75be",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c5bf071814703443",
+        "type": "mqtt out",
+        "z": "d275db0917751b2f",
+        "name": "temp_req",
+        "topic": "temp_req",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "84bae3707b62dd5b",
+        "x": 400,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "b9ca8e6a54718359",
+        "type": "mqtt in",
+        "z": "d275db0917751b2f",
+        "name": "",
+        "topic": "temp_data",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "84bae3707b62dd5b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 300,
+        "wires": [
+            [
+                "57e788fa4a123276",
+                "385f4531eac18cb4",
+                "801e57a8bf33ba49"
+            ]
+        ],
+        "info": "Gets the temperature data (currently, \nnot hooked up to the sensors)"
+    },
+    {
+        "id": "57e788fa4a123276",
+        "type": "debug",
+        "z": "d275db0917751b2f",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 350,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "584237942a7cbca8",
+        "type": "inject",
+        "z": "d275db0917751b2f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"temperature sensor\":\"READ\"}",
+        "payloadType": "json",
+        "x": 170,
+        "y": 100,
+        "wires": [
+            [
+                "c5bf071814703443"
+            ]
+        ],
+        "info": "Currently, sending a request \nevery 5 seconds for the temperature data"
+    },
+    {
+        "id": "385f4531eac18cb4",
+        "type": "ui_chart",
+        "z": "d275db0917751b2f",
+        "name": "",
+        "group": "c3553afd1fe37ae4",
+        "order": 0,
+        "width": "6",
+        "height": "6",
+        "label": "temperature_chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 370,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "801e57a8bf33ba49",
+        "type": "ui_text",
+        "z": "d275db0917751b2f",
+        "group": "c3553afd1fe37ae4",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Degrees",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 340,
+        "y": 420,
+        "wires": []
+    },
+    {
         "id": "dd92f5eebe2eece3",
         "type": "ui_button",
         "z": "e4ff58e5d4e74844",
