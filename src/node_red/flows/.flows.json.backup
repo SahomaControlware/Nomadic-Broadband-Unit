@@ -712,11 +712,11 @@
         "topic": "",
         "payload": "{\"multimeter_request\": \"STATUS\"}",
         "payloadType": "json",
-        "x": 510,
-        "y": 160,
+        "x": 110,
+        "y": 120,
         "wires": [
             [
-                "bf6edace3ce9c875"
+                "ab9975f9b85fa7f4"
             ]
         ]
     },
@@ -822,11 +822,32 @@
         "topic": "",
         "payload": "{\"heartbeat_request\": \"STATUS\"}",
         "payloadType": "json",
-        "x": 340,
+        "x": 120,
+        "y": 160,
+        "wires": [
+            [
+                "ab9975f9b85fa7f4"
+            ]
+        ]
+    },
+    {
+        "id": "4370cff72e790fcf",
+        "type": "mqtt in",
+        "z": "42f5fc87a973420f",
+        "name": "heartbeat read",
+        "topic": "heartbeat_status",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "84bae3707b62dd5b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 940,
         "y": 520,
         "wires": [
             [
-                "199e197a39f8efaa"
+                "2bf3633ae5a947c2"
             ]
         ]
     },
@@ -842,27 +863,40 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1080,
-        "y": 540,
+        "x": 1160,
+        "y": 520,
         "wires": []
     },
     {
-        "id": "199e197a39f8efaa",
-        "type": "mqtt out",
+        "id": "ab9975f9b85fa7f4",
+        "type": "switch",
         "z": "42f5fc87a973420f",
-        "name": "heartbeat",
-        "topic": "heartbeat_request",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "84bae3707b62dd5b",
-        "x": 560,
-        "y": 540,
-        "wires": []
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "{\"multimeter_request\": \"STATUS\"}",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 330,
+        "y": 140,
+        "wires": [
+            [
+                "bf6edace3ce9c875"
+            ],
+            []
+        ]
     },
     {
         "id": "4e7703b487d4460f",
