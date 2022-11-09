@@ -699,7 +699,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 210,
+        "x": 190,
         "y": 300,
         "wires": [
             [
@@ -775,10 +775,10 @@
         "type": "trigger",
         "z": "e4ff58e5d4e74844",
         "name": "if the heartbeat == Good!",
-        "op1": "0",
-        "op2": "1",
-        "op1type": "str",
-        "op2type": "str",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "num",
+        "op2type": "num",
         "duration": "5",
         "extend": true,
         "overrideDelay": false,

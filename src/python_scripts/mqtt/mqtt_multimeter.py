@@ -16,7 +16,7 @@ def multimeter_read(client, user_data, msg):
         msg (_type_): _description_
     """
     key = {
-        "heartbeat_multimeter":"1"
+        "heartbeat_multimeter": 1
     }
 
     if msg.topic == 'heartbeat_request':
