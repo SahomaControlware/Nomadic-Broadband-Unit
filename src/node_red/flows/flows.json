@@ -468,6 +468,54 @@
         "wires": []
     },
     {
+        "id": "45c25c690ba32add",
+        "type": "mqtt out",
+        "z": "d275db0917751b2f",
+        "name": "",
+        "topic": "heartbeat_request",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "84bae3707b62dd5b",
+        "x": 430,
+        "y": 500,
+        "wires": [],
+        "info": "Send out a request to the script"
+    },
+    {
+        "id": "7efabbe7e0d2a7b9",
+        "type": "inject",
+        "z": "d275db0917751b2f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 500,
+        "wires": [
+            [
+                "45c25c690ba32add"
+            ]
+        ]
+    },
+    {
         "id": "ff646cdc333eec06",
         "type": "mqtt out",
         "z": "e4ff58e5d4e74844",
@@ -498,7 +546,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 240,
+        "x": 200,
         "y": 440,
         "wires": [
             [
@@ -521,7 +569,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 300,
+        "x": 280,
         "y": 640,
         "wires": []
     },
@@ -664,10 +712,10 @@
         "type": "trigger",
         "z": "e4ff58e5d4e74844",
         "name": "if the heartbeat == Good!",
-        "op1": "0",
-        "op2": "1",
-        "op1type": "str",
-        "op2type": "str",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "num",
+        "op2type": "num",
         "duration": "5",
         "extend": true,
         "overrideDelay": false,
@@ -676,7 +724,7 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 1010,
+        "x": 930,
         "y": 400,
         "wires": [
             [
@@ -689,13 +737,13 @@
         "type": "function",
         "z": "e4ff58e5d4e74844",
         "name": "Check if its a temp service",
-        "func": "var new_msg = msg.payload;\n\nnode.log(new_msg.relay_1);\nnode.log(\"Msg received\");\n// This checks the key\nif(new_msg.relay_1 === \"heartbeat_temperature\"){\n    return 1\n}\nreturn 0;",
+        "func": "var new_msg = msg.payload;\n\nnode.log(\"Msg received\");\n// This checks the key\nif(new_msg.heartbeat_temperature === 1){\n    msg.payload = 1;\n    node.log(\"Yes!!\");\n    return msg;\n}\nreturn 0;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// Code added here will be run once\n// whenever the node is started.\nvar current_state = 0;\n",
         "finalize": "",
         "libs": [],
-        "x": 690,
+        "x": 610,
         "y": 400,
         "wires": [
             [
@@ -708,13 +756,13 @@
         "type": "function",
         "z": "e4ff58e5d4e74844",
         "name": "Check if its a multimeter service",
-        "func": "var new_msg = msg.payload;\n\nnode.log(new_msg.relay_1);\nnode.log(\"Msg received\");\n// This checks the key\nif (new_msg.relay_1 === \"heartbeat_multimeter\"){\n    return 1\n}\nreturn 0;",
+        "func": "var new_msg = msg.payload;\n\nnode.log(\"Msg received\");\n// This checks the key\nif (new_msg.heartbeat_multimeter === 1) {\n    msg.payload = 1;\n    return msg;\n}\nreturn 0;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// Code added here will be run once\n// whenever the node is started.\nvar current_state = 0;\n",
         "finalize": "",
         "libs": [],
-        "x": 690,
+        "x": 630,
         "y": 500,
         "wires": [
             [
@@ -739,7 +787,7 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 990,
+        "x": 970,
         "y": 500,
         "wires": [
             [
@@ -776,6 +824,22 @@
         "name": "",
         "x": 1250,
         "y": 500,
+        "wires": []
+    },
+    {
+        "id": "02464c7c9aeb616f",
+        "type": "debug",
+        "z": "e4ff58e5d4e74844",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 240,
         "wires": []
     },
     {
@@ -954,6 +1018,82 @@
         "statusType": "auto",
         "x": 1390,
         "y": 120,
+        "wires": []
+    },
+    {
+        "id": "18a65217e38edf63",
+        "type": "debug",
+        "z": "42f5fc87a973420f",
+        "name": "Inject Debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "e303219d3a2d1453",
+        "type": "inject",
+        "z": "42f5fc87a973420f",
+        "name": "heartbeat",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"heartbeat_request\": \"STATUS\"}",
+        "payloadType": "json",
+        "x": 340,
+        "y": 520,
+        "wires": [
+            [
+                "199e197a39f8efaa"
+            ]
+        ]
+    },
+    {
+        "id": "2bf3633ae5a947c2",
+        "type": "debug",
+        "z": "42f5fc87a973420f",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1080,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "199e197a39f8efaa",
+        "type": "mqtt out",
+        "z": "42f5fc87a973420f",
+        "name": "heartbeat",
+        "topic": "heartbeat_request",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "84bae3707b62dd5b",
+        "x": 560,
+        "y": 540,
         "wires": []
     },
     {
@@ -1564,129 +1704,5 @@
         "x": 370,
         "y": 100,
         "wires": []
-    },
-    {
-        "id": "18a65217e38edf63",
-        "type": "debug",
-        "z": "42f5fc87a973420f",
-        "name": "Inject Debug",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 750,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "e303219d3a2d1453",
-        "type": "inject",
-        "z": "42f5fc87a973420f",
-        "name": "heartbeat",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"heartbeat_request\": \"STATUS\"}",
-        "payloadType": "json",
-        "x": 340,
-        "y": 520,
-        "wires": [
-            [
-                "199e197a39f8efaa"
-            ]
-        ]
-    },
-    {
-        "id": "2bf3633ae5a947c2",
-        "type": "debug",
-        "z": "42f5fc87a973420f",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1080,
-        "y": 540,
-        "wires": []
-    },
-    {
-        "id": "199e197a39f8efaa",
-        "type": "mqtt out",
-        "z": "42f5fc87a973420f",
-        "name": "heartbeat",
-        "topic": "heartbeat_request",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "84bae3707b62dd5b",
-        "x": 560,
-        "y": 540,
-        "wires": []
-    },
-    {
-        "id": "45c25c690ba32add",
-        "type": "mqtt out",
-        "z": "d275db0917751b2f",
-        "name": "",
-        "topic": "heartbeat_request",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "84bae3707b62dd5b",
-        "x": 430,
-        "y": 500,
-        "wires": [],
-        "info": "Send out a request to the script"
-    },
-    {
-        "id": "7efabbe7e0d2a7b9",
-        "type": "inject",
-        "z": "d275db0917751b2f",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "3",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 190,
-        "y": 500,
-        "wires": [
-            [
-                "45c25c690ba32add"
-            ]
-        ]
     }
 ]
