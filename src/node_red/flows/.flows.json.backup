@@ -687,12 +687,21 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
+<<<<<<< HEAD
         "complete": "true",
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
         "x": 1200,
         "y": 320,
+=======
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 200,
+>>>>>>> 706502cbec7f88a65e0d204191cba7200af89e1a
         "wires": []
     },
     {
@@ -776,6 +785,7 @@
         "type": "debug",
         "z": "42f5fc87a973420f",
         "name": "Status Light Debug",
+<<<<<<< HEAD
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -856,10 +866,13 @@
         "type": "debug",
         "z": "42f5fc87a973420f",
         "name": "debug 3",
+=======
+>>>>>>> 706502cbec7f88a65e0d204191cba7200af89e1a
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
+<<<<<<< HEAD
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
@@ -899,6 +912,17 @@
         ]
     },
     {
+=======
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 80,
+        "wires": []
+    },
+    {
+>>>>>>> 706502cbec7f88a65e0d204191cba7200af89e1a
         "id": "4e7703b487d4460f",
         "type": "function",
         "z": "21ab3ea4cf55af84",

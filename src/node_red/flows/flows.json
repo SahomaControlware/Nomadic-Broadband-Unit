@@ -326,8 +326,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 160,
-        "y": 300,
+        "x": 180,
+        "y": 180,
         "wires": [
             [
                 "57e788fa4a123276",
@@ -351,8 +351,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 350,
-        "y": 300,
+        "x": 410,
+        "y": 180,
         "wires": []
     },
     {
@@ -423,8 +423,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 400,
-        "y": 360,
+        "x": 460,
+        "y": 240,
         "wires": [
             []
         ]
@@ -442,8 +442,8 @@
         "format": "{{msg.payload}}",
         "layout": "row-center",
         "className": "",
-        "x": 380,
-        "y": 420,
+        "x": 440,
+        "y": 300,
         "wires": []
     },
     {
@@ -463,8 +463,8 @@
         "scale": "normal",
         "minTemp": 0,
         "maxTemp": "35",
-        "x": 350,
-        "y": 480,
+        "x": 410,
+        "y": 360,
         "wires": []
     },
     {
@@ -1472,5 +1472,53 @@
         "x": 370,
         "y": 100,
         "wires": []
+    },
+    {
+        "id": "45c25c690ba32add",
+        "type": "mqtt out",
+        "z": "d275db0917751b2f",
+        "name": "",
+        "topic": "heartbeat_request",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "84bae3707b62dd5b",
+        "x": 430,
+        "y": 500,
+        "wires": [],
+        "info": "Send out a request to the script"
+    },
+    {
+        "id": "7efabbe7e0d2a7b9",
+        "type": "inject",
+        "z": "d275db0917751b2f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 500,
+        "wires": [
+            [
+                "45c25c690ba32add"
+            ]
+        ]
     }
 ]
