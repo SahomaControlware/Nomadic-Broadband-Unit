@@ -645,8 +645,8 @@
         "correl": "",
         "expiry": "",
         "broker": "84bae3707b62dd5b",
-        "x": 750,
-        "y": 160,
+        "x": 530,
+        "y": 120,
         "wires": []
     },
     {
@@ -662,13 +662,12 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 940,
-        "y": 160,
+        "x": 720,
+        "y": 120,
         "wires": [
             [
                 "5ab0e58a7683ba31",
-                "b6c24b3e47e7f0c3",
-                "043b1289b77c4e26"
+                "c088580980d5fc87"
             ]
         ]
     },
@@ -686,7 +685,7 @@
         "label": "Volts",
         "format": "{{value}}",
         "min": 0,
-        "max": "14",
+        "max": "30",
         "colors": [
             "#00b500",
             "#e6e600",
@@ -695,8 +694,8 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 1360,
-        "y": 200,
+        "x": 1340,
+        "y": 100,
         "wires": []
     },
     {
@@ -704,7 +703,7 @@
         "type": "debug",
         "z": "42f5fc87a973420f",
         "name": "Battery Sensor Debug",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -712,8 +711,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1200,
-        "y": 320,
+        "x": 980,
+        "y": 280,
         "wires": []
     },
     {
@@ -733,11 +732,12 @@
         "topic": "",
         "payload": "{\"multimeter_request\": \"STATUS\"}",
         "payloadType": "json",
-        "x": 510,
-        "y": 160,
+        "x": 290,
+        "y": 120,
         "wires": [
             [
-                "bf6edace3ce9c875"
+                "bf6edace3ce9c875",
+                "18a65217e38edf63"
             ]
         ]
     },
@@ -768,8 +768,8 @@
         "shape": "circle",
         "showGlow": true,
         "name": "Multimeter Status",
-        "x": 1390,
-        "y": 160,
+        "x": 1370,
+        "y": 60,
         "wires": []
     },
     {
@@ -777,14 +777,14 @@
         "type": "function",
         "z": "42f5fc87a973420f",
         "name": "function 5",
-        "func": "let reading = parseFloat(msg.payload);\nnode.log(msg);\nif(reading > 0) {\n    msg.payload = true\n    return msg;\n}\nmsg.payload = false;\nreturn msg;",
+        "func": "let reading = parseFloat(msg.payload.Voltage);\nnode.log(msg);\nif(reading > 0) {\n    msg.payload = true\n    return msg;\n}\nmsg.payload = false;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1180,
-        "y": 140,
+        "x": 1160,
+        "y": 40,
         "wires": [
             [
                 "ab5a29c75d472836",
@@ -805,8 +805,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1390,
-        "y": 120,
+        "x": 1370,
+        "y": 20,
         "wires": []
     },
     {
@@ -822,8 +822,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 750,
-        "y": 240,
+        "x": 530,
+        "y": 200,
         "wires": []
     },
     {
@@ -838,16 +838,16 @@
         ],
         "repeat": "",
         "crontab": "",
-        "once": false,
+        "once": true,
         "onceDelay": 0.1,
         "topic": "",
         "payload": "{\"heartbeat_request\": \"STATUS\"}",
         "payloadType": "json",
-        "x": 340,
-        "y": 520,
+        "x": 280,
+        "y": 160,
         "wires": [
             [
-                "199e197a39f8efaa"
+                "bf6edace3ce9c875"
             ]
         ]
     },
@@ -856,33 +856,147 @@
         "type": "debug",
         "z": "42f5fc87a973420f",
         "name": "debug 3",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1080,
-        "y": 540,
+        "x": 1000,
+        "y": 520,
         "wires": []
     },
     {
-        "id": "199e197a39f8efaa",
-        "type": "mqtt out",
+        "id": "1d56a3a7a3da499e",
+        "type": "mqtt in",
         "z": "42f5fc87a973420f",
-        "name": "heartbeat",
-        "topic": "heartbeat_request",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
+        "name": "",
+        "topic": "heartbeat_status",
+        "qos": "2",
+        "datatype": "auto-detect",
         "broker": "84bae3707b62dd5b",
-        "x": 560,
-        "y": 540,
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 700,
+        "y": 520,
+        "wires": [
+            [
+                "2bf3633ae5a947c2"
+            ]
+        ]
+    },
+    {
+        "id": "7a59a0f6a03d92c5",
+        "type": "function",
+        "z": "42f5fc87a973420f",
+        "name": "Voltage",
+        "func": "let volts = parseFloat(msg.payload.Voltage);\nlet newmsg = msg\n\nif (volts > 0) {\n    newmsg.payload = volts/100;\n    return newmsg;\n}\n\nreturn 0;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1160,
+        "y": 100,
+        "wires": [
+            [
+                "043b1289b77c4e26"
+            ]
+        ],
+        "info": "Read the voltage in the payload\n    -check if valid > 0\n    -set newmsg payload equal to that voltage\n        -return that newmsg"
+    },
+    {
+        "id": "c088580980d5fc87",
+        "type": "switch",
+        "z": "42f5fc87a973420f",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "hask",
+                "v": "Voltage",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 9,
+        "x": 930,
+        "y": 120,
+        "wires": [
+            [
+                "b6c24b3e47e7f0c3",
+                "7a59a0f6a03d92c5"
+            ],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "7c5607b2d2bba716",
+        "type": "debug",
+        "z": "42f5fc87a973420f",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 380,
         "wires": []
     },
     {
