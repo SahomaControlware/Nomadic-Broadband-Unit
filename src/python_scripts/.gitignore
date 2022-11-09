@@ -1,0 +1,6 @@
+node_modules/*
+src/node_red/flows/.flows_cred.json.backup
+src/node_red/flows/flows_cred.json
+src/python_scripts/mqtt/config
+mqtt/sensors/__pycache__
+

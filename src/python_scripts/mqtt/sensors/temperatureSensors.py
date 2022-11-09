@@ -24,6 +24,7 @@ class Sensors:
             config = yaml.load(config_file, Loader=yaml.FullLoader)
         self.__config = dict(config)
         self.readSensors()
+        
 
     def getConfig(self):
         return self.__config
@@ -52,11 +53,11 @@ class Sensors:
             status[name] = {'Status': "ON" if temp != None else "OFF"}
         if len(temps) == 0: 
             return
-        self.__status = status
-        self.__temp = temps
-        currTime = datetime.datetime.now()
-        month = currTime.strftime("%B")
-        currTime = ("%s %s, %s | %s:%s:%s" %(month, currTime.day, currTime.year, currTime.hour, currTime.minute, currTime.second))
-        self.__temp["time"] = currTime
-        self.__temp["userId"] = "1"
+        # self.__status = status
+        # self.__temp = temps
+        # currTime = datetime.datetime.now()
+        # month = currTime.strftime("%B")
+        # currTime = ("%s %s, %s | %s:%s:%s" %(month, currTime.day, currTime.year, currTime.hour, currTime.minute, currTime.second))
+        # self.__temp["time"] = currTime
+        # self.__temp["userId"] = "1"
         return temps
