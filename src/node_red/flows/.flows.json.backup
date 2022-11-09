@@ -326,8 +326,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 180,
-        "y": 180,
+        "x": 160,
+        "y": 300,
         "wires": [
             [
                 "57e788fa4a123276",
@@ -351,8 +351,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 410,
-        "y": 180,
+        "x": 350,
+        "y": 300,
         "wires": []
     },
     {
@@ -423,8 +423,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 460,
-        "y": 240,
+        "x": 400,
+        "y": 360,
         "wires": [
             []
         ]
@@ -442,8 +442,8 @@
         "format": "{{msg.payload}}",
         "layout": "row-center",
         "className": "",
-        "x": 440,
-        "y": 300,
+        "x": 380,
+        "y": 420,
         "wires": []
     },
     {
@@ -463,57 +463,9 @@
         "scale": "normal",
         "minTemp": 0,
         "maxTemp": "35",
-        "x": 410,
-        "y": 360,
+        "x": 350,
+        "y": 480,
         "wires": []
-    },
-    {
-        "id": "45c25c690ba32add",
-        "type": "mqtt out",
-        "z": "d275db0917751b2f",
-        "name": "",
-        "topic": "heartbeat_request",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "84bae3707b62dd5b",
-        "x": 430,
-        "y": 500,
-        "wires": [],
-        "info": "Send out a request to the script"
-    },
-    {
-        "id": "7efabbe7e0d2a7b9",
-        "type": "inject",
-        "z": "d275db0917751b2f",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "3",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "heart",
-        "payloadType": "str",
-        "x": 170,
-        "y": 500,
-        "wires": [
-            [
-                "45c25c690ba32add"
-            ]
-        ]
     },
     {
         "id": "79c9c8ea477ad745",
@@ -672,8 +624,8 @@
         "correl": "",
         "expiry": "",
         "broker": "84bae3707b62dd5b",
-        "x": 250,
-        "y": 120,
+        "x": 750,
+        "y": 160,
         "wires": []
     },
     {
@@ -681,7 +633,7 @@
         "type": "mqtt in",
         "z": "42f5fc87a973420f",
         "name": "sensor reading",
-        "topic": "multimeter_reading",
+        "topic": "multimeter_status",
         "qos": "2",
         "datatype": "auto-detect",
         "broker": "84bae3707b62dd5b",
@@ -689,13 +641,13 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 440,
-        "y": 120,
+        "x": 940,
+        "y": 160,
         "wires": [
             [
-                "043b1289b77c4e26",
                 "5ab0e58a7683ba31",
-                "b6c24b3e47e7f0c3"
+                "b6c24b3e47e7f0c3",
+                "043b1289b77c4e26"
             ]
         ]
     },
@@ -722,8 +674,8 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 860,
-        "y": 160,
+        "x": 1360,
+        "y": 200,
         "wires": []
     },
     {
@@ -735,19 +687,28 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
+<<<<<<< HEAD
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1200,
+        "y": 320,
+=======
         "complete": "payload",
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
         "x": 900,
         "y": 200,
+>>>>>>> 706502cbec7f88a65e0d204191cba7200af89e1a
         "wires": []
     },
     {
         "id": "2fbde1c6bd9ffa75",
         "type": "inject",
         "z": "42f5fc87a973420f",
-        "name": "load",
+        "name": "multimeter",
         "props": [
             {
                 "p": "payload"
@@ -760,11 +721,11 @@
         "topic": "",
         "payload": "{\"multimeter_request\": \"STATUS\"}",
         "payloadType": "json",
-        "x": 90,
+        "x": 110,
         "y": 120,
         "wires": [
             [
-                "bf6edace3ce9c875"
+                "ab9975f9b85fa7f4"
             ]
         ]
     },
@@ -795,8 +756,8 @@
         "shape": "circle",
         "showGlow": true,
         "name": "Multimeter Status",
-        "x": 890,
-        "y": 120,
+        "x": 1390,
+        "y": 160,
         "wires": []
     },
     {
@@ -810,8 +771,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 680,
-        "y": 100,
+        "x": 1180,
+        "y": 140,
         "wires": [
             [
                 "ab5a29c75d472836",
@@ -824,10 +785,134 @@
         "type": "debug",
         "z": "42f5fc87a973420f",
         "name": "Status Light Debug",
+<<<<<<< HEAD
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1390,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "18a65217e38edf63",
+        "type": "debug",
+        "z": "42f5fc87a973420f",
+        "name": "Inject Debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "e303219d3a2d1453",
+        "type": "inject",
+        "z": "42f5fc87a973420f",
+        "name": "heartbeat",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"heartbeat_request\": \"STATUS\"}",
+        "payloadType": "json",
+        "x": 120,
+        "y": 160,
+        "wires": [
+            [
+                "ab9975f9b85fa7f4"
+            ]
+        ]
+    },
+    {
+        "id": "4370cff72e790fcf",
+        "type": "mqtt in",
+        "z": "42f5fc87a973420f",
+        "name": "heartbeat read",
+        "topic": "heartbeat_status",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "84bae3707b62dd5b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 940,
+        "y": 520,
+        "wires": [
+            [
+                "2bf3633ae5a947c2"
+            ]
+        ]
+    },
+    {
+        "id": "2bf3633ae5a947c2",
+        "type": "debug",
+        "z": "42f5fc87a973420f",
+        "name": "debug 3",
+=======
+>>>>>>> 706502cbec7f88a65e0d204191cba7200af89e1a
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
+<<<<<<< HEAD
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1160,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "ab9975f9b85fa7f4",
+        "type": "switch",
+        "z": "42f5fc87a973420f",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "{\"multimeter_request\": \"STATUS\"}",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 330,
+        "y": 140,
+        "wires": [
+            [
+                "bf6edace3ce9c875"
+            ],
+            []
+        ]
+    },
+    {
+=======
         "complete": "payload",
         "targetType": "msg",
         "statusVal": "",
@@ -837,6 +922,7 @@
         "wires": []
     },
     {
+>>>>>>> 706502cbec7f88a65e0d204191cba7200af89e1a
         "id": "4e7703b487d4460f",
         "type": "function",
         "z": "21ab3ea4cf55af84",
