@@ -296,7 +296,7 @@
         "width": 6
     },
     {
-        "id": "c5bf071814703443",
+        "id": "4de45a5b1657fa5c",
         "type": "mqtt out",
         "z": "d275db0917751b2f",
         "name": "temp_req",
@@ -309,37 +309,35 @@
         "correl": "",
         "expiry": "",
         "broker": "84bae3707b62dd5b",
-        "x": 400,
-        "y": 100,
+        "x": 360,
+        "y": 560,
         "wires": []
     },
     {
-        "id": "b9ca8e6a54718359",
+        "id": "c2ac8974aa55d7cd",
         "type": "mqtt in",
         "z": "d275db0917751b2f",
         "name": "",
         "topic": "temp_data",
         "qos": "2",
-        "datatype": "auto-detect",
+        "datatype": "json",
         "broker": "84bae3707b62dd5b",
         "nl": false,
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 180,
-        "y": 180,
+        "x": 140,
+        "y": 740,
         "wires": [
             [
-                "57e788fa4a123276",
-                "385f4531eac18cb4",
-                "801e57a8bf33ba49",
-                "7ea32f09f9edc7b0"
+                "867a504c27d17fbe",
+                "9fb0374fc7e1c4cd"
             ]
         ],
         "info": "Gets the temperature data (currently, \nnot hooked up to the sensors)"
     },
     {
-        "id": "57e788fa4a123276",
+        "id": "c9e7269dd6c7317c",
         "type": "debug",
         "z": "d275db0917751b2f",
         "name": "debug 2",
@@ -351,12 +349,12 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 410,
-        "y": 180,
+        "x": 890,
+        "y": 580,
         "wires": []
     },
     {
-        "id": "584237942a7cbca8",
+        "id": "0e05db3230114756",
         "type": "inject",
         "z": "d275db0917751b2f",
         "name": "",
@@ -376,17 +374,17 @@
         "topic": "",
         "payload": "{\"temperature sensor\":\"READ\"}",
         "payloadType": "json",
-        "x": 170,
-        "y": 100,
+        "x": 190,
+        "y": 560,
         "wires": [
             [
-                "c5bf071814703443"
+                "4de45a5b1657fa5c"
             ]
         ],
         "info": "Currently, sending a request \nevery 5 seconds for the temperature data"
     },
     {
-        "id": "385f4531eac18cb4",
+        "id": "59f549bbc814f815",
         "type": "ui_chart",
         "z": "d275db0917751b2f",
         "name": "",
@@ -422,15 +420,14 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "className": "",
-        "x": 460,
-        "y": 240,
+        "x": 940,
+        "y": 620,
         "wires": [
             []
         ]
     },
     {
-        "id": "801e57a8bf33ba49",
+        "id": "ee4cec6b66d39133",
         "type": "ui_text",
         "z": "d275db0917751b2f",
         "group": "f6b14d864c7cdca3",
@@ -441,13 +438,12 @@
         "label": "Current Temperature:",
         "format": "{{msg.payload}}",
         "layout": "row-center",
-        "className": "",
-        "x": 440,
-        "y": 300,
+        "x": 920,
+        "y": 680,
         "wires": []
     },
     {
-        "id": "7ea32f09f9edc7b0",
+        "id": "d28e45724e820106",
         "type": "ui_widget_thermometer",
         "z": "d275db0917751b2f",
         "group": "25bd8b7a194197db",
@@ -462,13 +458,13 @@
         "unit": "°F",
         "scale": "normal",
         "minTemp": 0,
-        "maxTemp": "35",
-        "x": 410,
-        "y": 360,
+        "maxTemp": "100",
+        "x": 890,
+        "y": 720,
         "wires": []
     },
     {
-        "id": "45c25c690ba32add",
+        "id": "b70bec9ab8c8f57e",
         "type": "mqtt out",
         "z": "d275db0917751b2f",
         "name": "",
@@ -481,13 +477,13 @@
         "correl": "",
         "expiry": "",
         "broker": "84bae3707b62dd5b",
-        "x": 430,
-        "y": 500,
+        "x": 490,
+        "y": 1020,
         "wires": [],
         "info": "Send out a request to the script"
     },
     {
-        "id": "7efabbe7e0d2a7b9",
+        "id": "e4bf235a82a499db",
         "type": "inject",
         "z": "d275db0917751b2f",
         "name": "",
@@ -507,13 +503,95 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 190,
-        "y": 500,
+        "x": 250,
+        "y": 1020,
         "wires": [
             [
-                "45c25c690ba32add"
+                "b70bec9ab8c8f57e"
             ]
         ]
+    },
+    {
+        "id": "9fb0374fc7e1c4cd",
+        "type": "debug",
+        "z": "d275db0917751b2f",
+        "name": "ye",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 310,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "793bd300dc3a90de",
+        "type": "function",
+        "z": "d275db0917751b2f",
+        "name": "",
+        "func": "\nmsg.payload =  parseInt((msg.payload.Sensor1.TempC *9/5) + 32);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 660,
+        "wires": [
+            [
+                "c9e7269dd6c7317c",
+                "59f549bbc814f815",
+                "ee4cec6b66d39133",
+                "d28e45724e820106"
+            ]
+        ]
+    },
+    {
+        "id": "867a504c27d17fbe",
+        "type": "switch",
+        "z": "d275db0917751b2f",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "hask",
+                "v": "Sensor1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 370,
+        "y": 720,
+        "wires": [
+            [
+                "793bd300dc3a90de",
+                "327de17feb87cb37"
+            ]
+        ]
+    },
+    {
+        "id": "327de17feb87cb37",
+        "type": "debug",
+        "z": "d275db0917751b2f",
+        "name": "other",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 700,
+        "wires": []
     },
     {
         "id": "ff646cdc333eec06",
