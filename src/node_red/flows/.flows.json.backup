@@ -505,9 +505,9 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 190,
+        "payload": "heart",
+        "payloadType": "str",
+        "x": 170,
         "y": 500,
         "wires": [
             [
