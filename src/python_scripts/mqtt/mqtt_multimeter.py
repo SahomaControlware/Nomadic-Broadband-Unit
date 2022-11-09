@@ -7,6 +7,8 @@ TOPIC_NAME_SEND = "multimeter_status"
 HEARTBEAT_TOPIC_SEND = "heartbeat_status" 
 HEARTBEAT_TOPIC_RECIEVE = "heartbeat_request" #listen for this and respond back with status
 
+TOPICS = [TOPIC_NAME_RECIEVE, HEARTBEAT_TOPIC_RECIEVE]
+
 def multimeter_read(client, user_data, msg):
     """_summary_
     Checks for heartbeat 
@@ -19,20 +21,24 @@ def multimeter_read(client, user_data, msg):
         "heartbeat_multimeter":"1"
     }
 
-    if msg.topic == 'heartbeat_request':
-        client.publish(HEARTBEAT_TOPIC_SEND, key)
+    decoded_msg = msg.payload.decode() 
+    #Turns the JSON string into a python dictionary for easy map parsing
+    # decoded_msg = json.loads(decoded_msg) 
+    # print("We got a message")
+    print(decoded_msg)
 
-    if msg.topic == 'multimeter_request':
+    # print(msg.topic)
+    if 'heartbeat_request' in decoded_msg:
+        print("Still alive homie")
+        client.publish(HEARTBEAT_TOPIC_SEND, str(key))
+
+    if 'multimeter_request' in decoded_msg:
         voltage = str(round(12 + rand.random(),2))
         print(voltage)
         result = client.publish(TOPIC_NAME_SEND, voltage)
 
     #Payload gets the actual content of the m/ui/essage, decoding it converts it from a byte array to JSON object
-    decoded_msg = msg.payload.decode() 
-    #Turns the JSON string into a python dictionary for easy map parsing
-    decoded_msg = json.loads(decoded_msg) 
-    # print("We got a message")
-    print(decoded_msg)
+
     # for pins in decoded_msg:
     #     print(pins)
         # print(decoded_msg[pins])
@@ -47,6 +53,7 @@ def multimeter_read(client, user_data, msg):
 def on_connect_response(client, user_data, flags, rc):
     print("CONNACK server response: "+str(rc))
     client.subscribe(TOPIC_NAME_RECIEVE)
+    client.subscribe(HEARTBEAT_TOPIC_RECIEVE)
 
 def on_publish(client, userdata, mid):
     # print(userdata)
