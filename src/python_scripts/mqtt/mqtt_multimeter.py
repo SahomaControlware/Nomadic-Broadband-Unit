@@ -35,7 +35,7 @@ def multimeter_read(client, user_data, msg):
     """
 
     key = {
-        "heartbeat_multimeter":"1"
+        "heartbeat_multimeter": 1
     }
     
     decoded_msg = msg.payload.decode() 
@@ -45,11 +45,11 @@ def multimeter_read(client, user_data, msg):
     print(decoded_msg)
 
     # print(msg.topic)
-    if 'heartbeat_request' in decoded_msg:
+    if 'heartbeat_request' == msg.topic:
         print("Still alive homie")
-        client.publish(HEARTBEAT_TOPIC_SEND, str(key))
+        client.publish(HEARTBEAT_TOPIC_SEND, json.dumps(key))
 
-    if 'multimeter_request' in decoded_msg:
+    if 'multimeter_request' == msg.topic:
         data_to_publish = json.dumps(dict)
         voltage = str(round(12 + rand.random(),2))
         print(voltage)

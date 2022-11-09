@@ -569,8 +569,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 280,
-        "y": 640,
+        "x": 360,
+        "y": 580,
         "wires": []
     },
     {
@@ -629,6 +629,217 @@
         "name": "",
         "x": 1250,
         "y": 400,
+        "wires": []
+    },
+    {
+        "id": "3e6ae77f91885891",
+        "type": "inject",
+        "z": "e4ff58e5d4e74844",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"heartbeat\":\"STATUS\"}",
+        "payloadType": "json",
+        "x": 320,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c13ba1d3e4f7fae5",
+        "type": "comment",
+        "z": "e4ff58e5d4e74844",
+        "name": "Sends to python code",
+        "info": "",
+        "x": 100,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "49b2186c24f1bbc9",
+        "type": "comment",
+        "z": "e4ff58e5d4e74844",
+        "name": "Back from Python Code",
+        "info": "",
+        "x": 100,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "513d94bf4d430dd7",
+        "type": "inject",
+        "z": "e4ff58e5d4e74844",
+        "name": "Start Heartbeat",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 300,
+        "wires": [
+            [
+                "ff646cdc333eec06"
+            ]
+        ]
+    },
+    {
+        "id": "1d0009ecf641524d",
+        "type": "trigger",
+        "z": "e4ff58e5d4e74844",
+        "name": "if the heartbeat == Good!",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "num",
+        "op2type": "num",
+        "duration": "5",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 930,
+        "y": 400,
+        "wires": [
+            [
+                "e6a352e514c4fcab"
+            ]
+        ]
+    },
+    {
+        "id": "228cceb016e4d363",
+        "type": "function",
+        "z": "e4ff58e5d4e74844",
+        "name": "Check if its a temp service",
+        "func": "var new_msg = msg.payload;\n\nnode.log(\"Msg received\");\n// This checks the key\nif(new_msg.heartbeat_temperature === 1){\n    msg.payload = 1;\n    node.log(\"Yes!!\");\n    return msg;\n}\nreturn 0;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nvar current_state = 0;\n",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 400,
+        "wires": [
+            [
+                "1d0009ecf641524d"
+            ]
+        ]
+    },
+    {
+        "id": "233fccc23d75fd1a",
+        "type": "function",
+        "z": "e4ff58e5d4e74844",
+        "name": "Check if its a multimeter service",
+        "func": "var new_msg = msg.payload;\n\nnode.log(\"Msg received\");\n// This checks the key\nlet check = parseInt(new_msg.heartbeat_multimeter)\nif (check === 1) {\n    msg.payload = 1;\n    return msg;\n}\nreturn 0;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nvar current_state = 0;\n",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 500,
+        "wires": [
+            [
+                "f72052d6caf1abea"
+            ]
+        ]
+    },
+    {
+        "id": "f72052d6caf1abea",
+        "type": "trigger",
+        "z": "e4ff58e5d4e74844",
+        "name": "if the heartbeat == Good!",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "num",
+        "op2type": "num",
+        "duration": "5",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 970,
+        "y": 500,
+        "wires": [
+            [
+                "f66978913d66f672"
+            ]
+        ]
+    },
+    {
+        "id": "f66978913d66f672",
+        "type": "ui_led",
+        "z": "e4ff58e5d4e74844",
+        "order": 1,
+        "group": "a5898775f44b2632",
+        "width": 0,
+        "height": 0,
+        "label": "Multimeter Status",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "num"
+            },
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 1250,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "02464c7c9aeb616f",
+        "type": "debug",
+        "z": "e4ff58e5d4e74844",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 240,
         "wires": []
     },
     {
@@ -1606,217 +1817,6 @@
         "broker": "",
         "x": 370,
         "y": 100,
-        "wires": []
-    },
-    {
-        "id": "3e6ae77f91885891",
-        "type": "inject",
-        "z": "e4ff58e5d4e74844",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"heartbeat\":\"STATUS\"}",
-        "payloadType": "json",
-        "x": 320,
-        "y": 100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c13ba1d3e4f7fae5",
-        "type": "comment",
-        "z": "e4ff58e5d4e74844",
-        "name": "Sends to python code",
-        "info": "",
-        "x": 100,
-        "y": 1000,
-        "wires": []
-    },
-    {
-        "id": "49b2186c24f1bbc9",
-        "type": "comment",
-        "z": "e4ff58e5d4e74844",
-        "name": "Back from Python Code",
-        "info": "",
-        "x": 100,
-        "y": 1100,
-        "wires": []
-    },
-    {
-        "id": "513d94bf4d430dd7",
-        "type": "inject",
-        "z": "e4ff58e5d4e74844",
-        "name": "Start Heartbeat",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "3",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 210,
-        "y": 300,
-        "wires": [
-            [
-                "ff646cdc333eec06"
-            ]
-        ]
-    },
-    {
-        "id": "1d0009ecf641524d",
-        "type": "trigger",
-        "z": "e4ff58e5d4e74844",
-        "name": "if the heartbeat == Good!",
-        "op1": "1",
-        "op2": "0",
-        "op1type": "num",
-        "op2type": "num",
-        "duration": "5",
-        "extend": true,
-        "overrideDelay": false,
-        "units": "s",
-        "reset": "",
-        "bytopic": "all",
-        "topic": "topic",
-        "outputs": 1,
-        "x": 930,
-        "y": 400,
-        "wires": [
-            [
-                "e6a352e514c4fcab"
-            ]
-        ]
-    },
-    {
-        "id": "228cceb016e4d363",
-        "type": "function",
-        "z": "e4ff58e5d4e74844",
-        "name": "Check if its a temp service",
-        "func": "var new_msg = msg.payload;\n\nnode.log(\"Msg received\");\n// This checks the key\nif(new_msg.heartbeat_temperature === 1){\n    msg.payload = 1;\n    node.log(\"Yes!!\");\n    return msg;\n}\nreturn 0;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// Code added here will be run once\n// whenever the node is started.\nvar current_state = 0;\n",
-        "finalize": "",
-        "libs": [],
-        "x": 610,
-        "y": 400,
-        "wires": [
-            [
-                "1d0009ecf641524d"
-            ]
-        ]
-    },
-    {
-        "id": "233fccc23d75fd1a",
-        "type": "function",
-        "z": "e4ff58e5d4e74844",
-        "name": "Check if its a multimeter service",
-        "func": "var new_msg = msg.payload;\n\nnode.log(\"Msg received\");\n// This checks the key\nif (new_msg.heartbeat_multimeter === 1) {\n    msg.payload = 1;\n    return msg;\n}\nreturn 0;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// Code added here will be run once\n// whenever the node is started.\nvar current_state = 0;\n",
-        "finalize": "",
-        "libs": [],
-        "x": 630,
-        "y": 500,
-        "wires": [
-            [
-                "f72052d6caf1abea"
-            ]
-        ]
-    },
-    {
-        "id": "f72052d6caf1abea",
-        "type": "trigger",
-        "z": "e4ff58e5d4e74844",
-        "name": "if the heartbeat == Good!",
-        "op1": "0",
-        "op2": "1",
-        "op1type": "str",
-        "op2type": "str",
-        "duration": "5",
-        "extend": true,
-        "overrideDelay": false,
-        "units": "s",
-        "reset": "",
-        "bytopic": "all",
-        "topic": "topic",
-        "outputs": 1,
-        "x": 970,
-        "y": 500,
-        "wires": [
-            [
-                "f66978913d66f672"
-            ]
-        ]
-    },
-    {
-        "id": "f66978913d66f672",
-        "type": "ui_led",
-        "z": "e4ff58e5d4e74844",
-        "order": 1,
-        "group": "a5898775f44b2632",
-        "width": 0,
-        "height": 0,
-        "label": "Multimeter Status",
-        "labelPlacement": "left",
-        "labelAlignment": "left",
-        "colorForValue": [
-            {
-                "color": "#ff0000",
-                "value": "false",
-                "valueType": "bool"
-            },
-            {
-                "color": "#008000",
-                "value": "true",
-                "valueType": "bool"
-            }
-        ],
-        "allowColorForValueInMessage": false,
-        "shape": "circle",
-        "showGlow": true,
-        "name": "",
-        "x": 1250,
-        "y": 500,
-        "wires": []
-    },
-    {
-        "id": "02464c7c9aeb616f",
-        "type": "debug",
-        "z": "e4ff58e5d4e74844",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 780,
-        "y": 240,
         "wires": []
     }
 ]
