@@ -10,6 +10,13 @@ TOPIC_NAME_SEND = "heartbeat_send" # A string to listen out for. Do a mqtt in to
 TOPIC_NAME_RECEIVE = "heartbeat_receive" 
 
 def relay_trigger(client, user_data, msg):
+    """Activates when the topic is sent too
+
+    Args:
+        client (Any): mqtt_client
+        user_data (_type_): _description_
+        msg (_type_): _description_
+    """
     #Payload gets the actual content of the message, decoding it converts it from a byte array to JSON object
     decoded_msg = msg.payload.decode() 
     #Turns the JSON string into a python dictionary for easy map parsing

@@ -26,7 +26,7 @@ def temp_request_trigger(client, user_data, msg):
 
     # PUBLISH HERE
     client.publish(TOPIC_NAME_SEND, str(random.randrange(0, 32)))
-    client.publish(TOPIC_NAME_STATUS, "{heartbeat_temperature:1}")
+    client.publish(TOPIC_NAME_STATUS, '{"heartbeat_temperature":1}')
 
 
 def on_connect_response(client, user_data, flags, rc):
